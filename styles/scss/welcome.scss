@@ -1,0 +1,15 @@
+.welcome {
+
+    &__container {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+
+    &__form {
+        background-color: $secondary-color;
+        color: $fourth-color;
+        padding: 8% 12%;
+    }
+}
