@@ -1,0 +1,29 @@
+@mixin btnDefault {
+    display: block;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn {
+    
+    &__active {
+        @include btnDefault;
+        background-color: $primary-color;
+
+        &:hover {
+            background-color: $third-color;
+            color: white;
+            transition: .3s;
+        }
+    }
+    
+    &__locked {
+        @include btnDefault;
+        cursor: default;
+        background-color: #eeeeee;
+    }
+}

@@ -15,17 +15,13 @@ a {
   box-sizing: border-box;
 }
 
-input {
-    display: block;
-    margin-bottom: 1rem;
-    font-size: 1.25em;
-    padding: .5rem;
-    width: 100%;
-}
-
 label {
     font-size: 1.15rem;
 }
 
 @import "variables.scss";
 @import "welcome.scss";
+@import "components/button.scss";
+@import "components/a.scss";
+@import "components/alert.scss";
+@import "components/input.scss";

@@ -3,13 +3,28 @@
     &__container {
         width: 100vw;
         height: 100vh;
-        display: grid;
-        grid-template-columns: 30% 70%;
+        display: flex;
+        flex-wrap: wrap;
+        // grid-template-columns: 30% 70%;
     }
 
     &__form {
         background-color: $secondary-color;
         color: $fourth-color;
-        padding: 8% 12%;
+        padding: 4% 2%;
+        flex-grow: 1;
+        display: grid;
+        grid-row-gap: 10px;
+        grid-template-rows: 3.5rem 1rem 3.3rem 1rem 3.3rem 2.5rem 3rem 3.5rem;
+        align-items: center;
+        width: 25%;
+    }
+
+    &__image {
+        height: 100vh;
+        background-color: $third-color;
+        flex-basis: 0;
+        flex-grow: 999;
+        min-width: 70%;
     }
 }
