@@ -1,17 +1,21 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../store/actions'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Alert from './Alert'
+import { post_request } from '../utils'
 
 const Welcome = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const [ btnStyle, setBtnStyle ] = useState('btn__locked')
+  const [ serverResCode, setServerResCode ] = useState(200)
   const [ formValues, setFormValues ] = useState({
     'email': '',
     'password': ''
   })
-  const [ serverResCode, setServerResCode ] = useState(200)
 
   const logInHandler = async event => {
     if(btnStyle === 'btn__locked') {
@@ -21,29 +25,13 @@ const Welcome = () => {
     
     const { email, password } = formValues
 
-    const getCircularReplacer = () => {
-      const seen = new WeakSet()
-      return (__, value) => {
-        if (typeof value === 'object' && value !== null) {
-          if (seen.has(value)) {
-            return
-          }
-          seen.add(value)
-        }
-        return value
-      }
-    }
-
-    const response = await fetch('/api/login/user', {
-      method: 'POST',
-      body: JSON.stringify({ email: email, password: password }, getCircularReplacer())
-    })
-
-    const data = await response.json()
-    if(data.status !== 200) {
-      setServerResCode(401)
+    const data = await post_request('/api/login/user', { email: email, password: password })
+  
+    if(data.status === 200) {
+      dispatch(userActions.setUser(data.user))
+      router.replace(`${router.route}admin`)
     } else {
-      router.replace(`${router.route}/admin`)
+      setServerResCode(data.status)
     }
   }
 
@@ -90,7 +78,7 @@ const Welcome = () => {
           { serverResCode !== 200 && <Alert /> }
       </div>
       <div className='welcome__image'>
-        <object type='image/svg+xml' data='/image.svg' width='1300'></object>
+        <object type='image/svg+xml' data='/image.svg'></object>
       </div>
     </div>
   );

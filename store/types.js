@@ -1,0 +1,6 @@
+export const types = {
+    NONE: 'NONE',
+    LOGGING_SUCCESS: 'LOGGING_SUCCESS',
+    LOGGING_FAILURE: 'LOGGING_FAILURE',
+    LOGGING_OUT: 'LOGGING_OUT',
+}
