@@ -26,3 +26,19 @@ export const post_request = (url, data) => {
         }
     })
 }
+
+export const patch_request = (url, data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const responseObj = await fetch(url, {
+                method: 'PATCH',
+                body: JSON.stringify(data, getCircularReplacer())
+            })
+        
+            const response = await responseObj.json()
+            resolve(response)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}

@@ -25,7 +25,7 @@ const Welcome = () => {
     
     const { email, password } = formValues
 
-    const data = await post_request('/api/login/user', { email: email, password: password })
+    const data = await post_request('/api/user', { email: email, password: password })
   
     if(data.status === 200) {
       dispatch(userActions.setUser(data.user))

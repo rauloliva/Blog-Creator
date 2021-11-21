@@ -19,10 +19,13 @@ label {
     font-size: 1.15rem;
 }
 
+@import "helpers.scss";
 @import "variables.scss";
 @import "views/welcome.scss";
 @import "components/button.scss";
 @import "components/a.scss";
 @import "components/alert.scss";
 @import "components/input.scss";
+@import "views/profile.scss";
+@import "components/modal.scss";
 @import "views/Nav.scss";

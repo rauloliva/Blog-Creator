@@ -26,4 +26,45 @@
         cursor: default;
         background-color: #eeeeee;
     }
+
+    &__link {
+        display: block;
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 2;
+        text-align: center;
+        white-space: nowrap;
+        width: 100%;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $third-color;
+        }
+    }
+
+    &__error {
+        background-color: $color-error;
+        color: white;
+
+        &:hover {
+            background-color: $color-bg-error;
+            color: black;
+            transition: .3s;
+        }
+    }
+
+    &__color {
+        &-p-s {
+            background-color: $primary-color;
+
+            &:hover {
+                background-color: $secondary-color;
+                color: black;
+                transition: .3s;
+            }
+            
+        }
+    }
 }

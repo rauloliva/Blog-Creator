@@ -1,14 +1,6 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import Link from 'next/link'
 
 const Redirect = () => {
-    const router = useRouter()
-
-    useEffect(() => {
-        return router.push('/')
-    }, [router])
-
     return (
         <div>
             <h3>You do not have access</h3>

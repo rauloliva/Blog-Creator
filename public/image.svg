@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 1000 600">
   <defs>
     <style>
+      .arrow {
+        transition: all 0.4s;
+        transform: translateX(5px);
+      }
+
+      .arrow-leave {
+        transition: all 0.4s;
+        transform: translateX(-1px);
+      }
+
       .cls-1 {
         clip-path: url(#clip-Custom_Size_1);
       }
@@ -8,7 +18,7 @@
       .cls-2 {
         fill: #5f7a61;
         stroke: #707070;
-      }
+      } 
 
       .cls-3 {
         stroke: #d5eebb;
@@ -61,8 +71,7 @@
       }
 
       .link:hover, .link:focus {
-        fill: #fff;
-        
+        fill: #fff; 
       }
 
       .image {
@@ -97,9 +106,26 @@
 so the people can read what’s on your mind." class="cls-4" transform="translate(63 201)"><tspan x="0" y="0">Effortless create amazing blogs </tspan><tspan x="0" y="36">so the people can read what’s on your mind.</tspan></text>
     <text id="Explore_our_blogs" data-name="Explore our blogs" class="cls-5" transform="translate(63 294)"><tspan x="0" y="0">
     <a class='link' target='_blank' href='https://www.google.com'>Explore our blogs</a>
+    
     </tspan></text>
+    
     <text id="Easily_create_blogs_that_can_reach_people_s_mind" data-name="Easily create blogs 
 that can reach people’s mind" class="cls-6" transform="translate(63 88)"><tspan x="0" y="0">Easily create blogs that can reach</tspan><tspan x="0" y="54">people’s mind</tspan></text>
   </g>
+
+  <path id="arrow" d="M 283 275 l 15 15 l -15 15 l 0 0" fill="#D5EEBB" />
+    
+  <script>
+    var link = document.querySelector('.link');
+    link.addEventListener('mouseenter', function(e) {
+      document.getElementById('arrow').classList.remove('arrow-leave');
+      document.getElementById('arrow').classList.add('arrow');
+    });  
+
+    link.addEventListener('mouseleave', function(e) {
+      document.getElementById('arrow').classList.remove('arrow');
+      document.getElementById('arrow').classList.add('arrow-leave');
+    });  
+  </script>
 </svg>
 

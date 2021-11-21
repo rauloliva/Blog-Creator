@@ -5,6 +5,15 @@ const setUser = user => ({
     payload: user
 })
 
+const setModal = (isActive, modalData) => ({
+    type: isActive ? types.MODAL_ACTIVE : types.MODAL_INACTIVE,
+    payload: modalData
+})
+
 export const userActions = {
     setUser
+}
+
+export const modalActions = {
+    setModal
 }
