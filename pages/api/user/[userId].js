@@ -15,7 +15,7 @@ const userUpdate = async (req, res) => {
     }
 }
 
-const updateUser = async (req) => {
+const updateUser = async req => {
     let response
     try {
         const { userId } = req.query
@@ -25,16 +25,14 @@ const updateUser = async (req) => {
         await db.none(`UPDATE public."Users" SET user_first_name = '${user_first_name}', user_last_name = '${user_last_name}', user_email = '${user_email}', user_phone = '${user_phone}', user_birthday = '${user_birthday}', user_description = '${user_description}', user_password = '${user_password}' WHERE user_id = ${userId}`)
         
         response = { user: formData, status: 200 }
-        return response
     } catch (error) {
         if(error.code == 0) {
             response = { message: "User not found", error: error, status: 401 }
         } else {
             response = { message: "Server internal error Eeeee", error: error, status: 500 }
         }
-
-        return response
     }
+    return response
 }
 
 export default userUpdate

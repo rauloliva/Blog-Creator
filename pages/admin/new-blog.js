@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import { useSelector } from 'react-redux'
 const Layout = React.lazy(() => import('../../components/LayoutAdmin'))
-const ProfileForm = React.lazy(() => import('../../components/ProfileFormAdmin'))
+const BlogForm = React.lazy(() => import('../../components/BlogFormAdmin'))
 
-const Profile = () => {
+const NewBlog = () => {
     const user = useSelector(state => state.user).user
 
     return (
         <Layout>
-            <ProfileForm user={ user }/>
+            <BlogForm user={ user }/>
         </Layout>
-    );
+    )
 }
 
-export default Profile
+export default NewBlog

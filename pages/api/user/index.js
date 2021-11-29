@@ -21,16 +21,14 @@ const login = async (req) => {
         const { email, password } = JSON.parse(req.body)
         const user = await db.one(`SELECT * FROM public."Users" WHERE user_email = '${email}' AND user_password = '${password}'`)
         response = { user, status: 200 }
-        return response
     } catch (error) {
         if(error.code == 0) {
             response = { message: "The Credentials are incorrect", error: error, status: 401 }
         } else {
             response = { message: "Server internal error", error: error, status: 500 }
         }
-
-        return response
     }
+    return response
 }
 
 export default userLogin

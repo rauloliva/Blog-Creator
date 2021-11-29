@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 const Redirect = React.lazy(() => import('./Redirect'))
-const NavBar = React.lazy(() => import('../../components/NavbarAdmin'))
 const Layout = React.lazy(() => import('../../components/LayoutAdmin'))
 
 export default function Admin()  {
@@ -12,7 +11,6 @@ export default function Admin()  {
             { user.isAuthenticated ? (
                 <Fragment>
                     <Layout>
-                        <NavBar />
                         <div>
                             <h2>Welcome View</h2>
                         </div>

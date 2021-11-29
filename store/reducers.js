@@ -10,7 +10,7 @@ const defaultModalState = {
   isActive: false,
   header: '',
   body: '',
-  error: false,
+  error: false
 }
 
 const userReducer = (state = defaultUserState, { type, payload }) => {
@@ -37,7 +37,7 @@ const modalReducer = (state = defaultModalState, { type, payload }) => {
         isActive: true,
         header: payload.header,
         body: payload.body,
-        error: payload.error,
+        error: payload.error
       }
       break;
     
@@ -46,7 +46,7 @@ const modalReducer = (state = defaultModalState, { type, payload }) => {
         isActive: false,
         header: '',
         body: '',
-        error: false,
+        error: false
       }
       break;
     default:

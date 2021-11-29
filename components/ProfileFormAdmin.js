@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../store/actions'
-import { patch_request } from '../utils'
+import { request } from '../utils'
 import { modalActions } from '../store/actions'
 
 const ProfileForm = ({ user }) => {
@@ -17,10 +17,21 @@ const ProfileForm = ({ user }) => {
     const [ userDescription, setUserDescription ] = useState(user.user_description);
     const [ password, setPassword ] = useState('');
 
+    useEffect(() => {
+        if(user.user_id) {
+            setFirstName(user.user_first_name)
+            setLastName(user.user_last_name)
+            setEmail(user.user_email)
+            setPhone(user.user_phone)
+            setBrithday(user.user_birthday)
+            setUserDescription(user.user_description)
+        }
+    }, [user])
+
     const saveHandler = async () => {
         const pwd = password.length > 0 ? password : user.user_password;
 
-        const response = await patch_request('/api/user/' + user.user_id, { 
+        const response = await request('/api/user/' + user.user_id, 'PATCH' ,{ 
             user_first_name: firstName,
             user_last_name: lastName,
             user_email: email,
@@ -41,11 +52,11 @@ const ProfileForm = ({ user }) => {
     }
 
     return (
-        <div className='profile'>
-            <div className='profile__form'>
-                <h2>my profile</h2>
+        <div className='form'>
+            <div className='form__container'>
+                <h2 className='title'>my profile</h2>
                 <h3>user since: {creation_date}</h3>
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='name'>First Name</label>
                     <input 
                         type='text' 
@@ -55,7 +66,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='First Name' />
                 </div>
 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='last-name'>Last Name</label>
                     <input 
                         type='text' 
@@ -65,7 +76,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='Last Name' />
                 </div>
                 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='email'>Email</label>
                     <input 
                         type='text' 
@@ -75,7 +86,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='Email' />
                 </div>
 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='phone'>Phone</label>
                     <input 
                         type='text' 
@@ -85,7 +96,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='Phone' />
                 </div>
 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='brithday'>Birthday</label>
                     <input 
                         type='date' 
@@ -95,7 +106,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='Birthday' />
                 </div>
 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='password'>Password</label>
                     <input 
                         type='password' 
@@ -105,7 +116,7 @@ const ProfileForm = ({ user }) => {
                         placeholder='Password'/>
                 </div>
 
-                <div className='profile__form__item'>
+                <div className='form__item'>
                     <label htmlFor='password'>User Description</label>
                     <textarea
                         id='description'

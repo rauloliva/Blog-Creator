@@ -5,3 +5,14 @@
 .mauto {
     margin: auto;
 }
+
+.title {
+    padding: 1rem;
+    background-color: $third-color;
+    color: $secondary-color;
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}

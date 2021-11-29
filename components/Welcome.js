@@ -4,7 +4,7 @@ import { userActions } from '../store/actions'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Alert from './Alert'
-import { post_request } from '../utils'
+import { request } from '../utils'
 
 const Welcome = () => {
   const router = useRouter()
@@ -25,7 +25,7 @@ const Welcome = () => {
     
     const { email, password } = formValues
 
-    const data = await post_request('/api/user', { email: email, password: password })
+    const data = await request('/api/user', 'POST', { email: email, password: password })
   
     if(data.status === 200) {
       dispatch(userActions.setUser(data.user))
