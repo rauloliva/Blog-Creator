@@ -1,8 +1,12 @@
 html,
 body {
+  height: 100vh;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; }
+
+#__next {
+  height: 100%; }
 
 a {
   color: inherit;
@@ -259,3 +263,114 @@ textarea {
     .blogs__item:hover {
       background-color: #D5EEBB;
       transition: all .3s; }
+
+.nav {
+  margin: 0;
+  width: 100%;
+  position: sticky;
+  z-index: 9000;
+  top: 0;
+  background-color: #5F7A61;
+  color: #D5EEBB;
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.5); }
+  .nav__list {
+    margin: 0;
+    padding: 1.5rem;
+    list-style: none;
+    display: flex; }
+    .nav__list > li {
+      margin: 0 1rem;
+      padding: 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out; }
+      .nav__list > li:hover {
+        color: #7FC8A9; }
+
+.blog {
+  width: 100%;
+  height: auto;
+  padding: 0 30%;
+  background-color: #D5EEBB; }
+  .blog > hr {
+    background-color: #444941;
+    height: 3px;
+    border: none; }
+  .blog__box {
+    height: 100%;
+    display: flex;
+    flex-direction: column; }
+  .blog__author {
+    display: flex;
+    column-gap: 1.3rem; }
+  .blog__title-container {
+    background-color: #444941;
+    color: #7FC8A9;
+    padding: 1rem 30%; }
+  .blog__introduction {
+    margin: 2rem 0;
+    font-size: 18px;
+    line-height: 1.5; }
+  .blog__body {
+    margin: 2rem 0;
+    font-size: 16px; }
+
+.author {
+  margin-bottom: 2rem; }
+  .author > h2 {
+    font-size: 1.7em; }
+  .author__name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #444941; }
+  .author__title {
+    font-size: 1.1em;
+    color: #444941;
+    display: block; }
+  .author__description {
+    font-size: 1.1em;
+    line-height: 1.625; }
+
+.footer {
+  width: 100%;
+  background-color: #5F7A61;
+  color: #D5EEBB;
+  bottom: 0;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold; }
+  .footer__copy {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 2rem; }
+  .footer > a {
+    color: #7FC8A9;
+    text-decoration: none; }
+  .footer > a:hover {
+    color: #D5EEBB; }
+  .footer > a:active {
+    color: #5F7A61; }
+  .footer > a:visited {
+    color: #7FC8A9; }
+
+.not-found {
+  background-color: #D5EEBB;
+  color: #5F7A61;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 20%; }
+  .not-found > h1 {
+    font-size: 3em;
+    color: #9c2c2c; }
+  .not-found > p {
+    font-size: 1.5em; }

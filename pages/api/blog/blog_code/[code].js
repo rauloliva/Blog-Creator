@@ -25,7 +25,6 @@ const retrieveBlog = async req => {
     try {
         const code = req.query.code
         const blog = await db.any(`SELECT * FROM public."Blogs" WHERE blog_code = '${code}'`)
-        console.log('blog ', blog[0]);
         response = { status: 200, blog: blog[0] }
     }
     catch(err) {

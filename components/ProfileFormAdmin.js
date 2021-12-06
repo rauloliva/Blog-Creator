@@ -16,6 +16,7 @@ const ProfileForm = ({ user }) => {
     const [ brithday, setBrithday ] = useState(user.user_birthday);
     const [ userDescription, setUserDescription ] = useState(user.user_description);
     const [ password, setPassword ] = useState('');
+    const [ title, setTitle ] = useState(user.user_title)
 
     useEffect(() => {
         if(user.user_id) {
@@ -25,6 +26,7 @@ const ProfileForm = ({ user }) => {
             setPhone(user.user_phone)
             setBrithday(user.user_birthday)
             setUserDescription(user.user_description)
+            setTitle(user.user_title)
         }
     }, [user])
 
@@ -40,7 +42,8 @@ const ProfileForm = ({ user }) => {
             user_description: userDescription,
             user_password: pwd,
             user_creation_date: creation_date,
-            user_id: user.user_id
+            user_id: user.user_id,
+            user_title: title
          })
 
         if(response.status === 200) {
@@ -114,6 +117,16 @@ const ProfileForm = ({ user }) => {
                         value={ password }
                         onChange={ e => setPassword(e.target.value) }
                         placeholder='Password'/>
+                </div>
+
+                <div className='form__item'>
+                    <label htmlFor='title'>Job Title</label>
+                    <input 
+                        type='text' 
+                        id='title' 
+                        value={ title }
+                        onChange={ e => setTitle(e.target.value) }
+                        placeholder='Job Title'/>
                 </div>
 
                 <div className='form__item'>

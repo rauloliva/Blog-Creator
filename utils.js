@@ -26,3 +26,7 @@ export const request = (url, method, data = null) => {
       }
   })
 }
+
+export const global = {
+  API_URL: 'http://localhost:3000/api/',
+}

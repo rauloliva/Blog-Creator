@@ -5,7 +5,7 @@ import { request } from '../utils'
 const MyBlogs = ({ user }) => {
     const router = useRouter()
 
-    const [ blogs, setBlogs ] = useState([]);
+    const [ blogs, setBlogs ] = useState([])
     
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -39,7 +39,7 @@ const MyBlogs = ({ user }) => {
                         return (
                             <div className='blogs__item' key={blog.blog_id} onClick={ () => goToBlogHandler(blog.blog_code) }>
                                 <h3 className='blogs__item__title'>
-                                    { blog.blog_title.toUpperCase() }
+                                    { blog.blog_title.toUpperCase().substring(0, 40) + '...' }
                                 </h3>
                                 <p className='blogs__item__description'>
                                     { blog.blog_introduction.substring(0, 60) + '...' }
@@ -47,14 +47,13 @@ const MyBlogs = ({ user }) => {
                                 <p className='blogs__item__date'>
                                     { date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() }
                                 </p>
-                            </div>)
+                            </div> )
                         }
                     )
                 }
             </div>
-            
         </div>
-    );
+    )
 }
 
 export default MyBlogs

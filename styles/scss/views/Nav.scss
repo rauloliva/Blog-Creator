@@ -1,10 +1,7 @@
 .nav {
-    
     &__container {
-        // width: 100vw;
         height: 100vh;
         display: flex;
-        // flex-wrap: wrap;
     }
 
     &__options {
@@ -17,11 +14,6 @@
         color: $secondary-color;
         margin-bottom: 1rem;
         height: 100%;
-
-        // flex-grow: 1;
-        // display: grid;
-        // grid-row-gap: 15px;
-        // grid-template-rows: 3.5rem 1rem 3.3rem 1rem 3.3rem 2.5rem 3rem 4.5rem;
         width: 18%;
     }
 }
