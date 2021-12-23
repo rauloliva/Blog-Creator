@@ -1,17 +1,17 @@
-import { combineReducers } from 'redux'
-import { types } from './types'
+import { combineReducers } from "redux";
+import { types } from "./types";
 
 const defaultUserState = {
   isAuthenticated: false,
   user: {},
-}
+};
 
 const defaultModalState = {
   isActive: false,
-  header: '',
-  body: '',
-  error: false
-}
+  header: "",
+  body: "",
+  error: false,
+};
 
 const userReducer = (state = defaultUserState, { type, payload }) => {
   switch (type) {
@@ -19,16 +19,16 @@ const userReducer = (state = defaultUserState, { type, payload }) => {
       state = {
         isAuthenticated: true,
         user: payload,
-      }
-      break
+      };
+      break;
     case types.LOGGING_OUT:
-      state = defaultUserState
-      break
+      state = defaultUserState;
+      break;
     default:
-      return state
+      return state;
   }
-  return state
-}
+  return state;
+};
 
 const modalReducer = (state = defaultModalState, { type, payload }) => {
   switch (type) {
@@ -37,27 +37,27 @@ const modalReducer = (state = defaultModalState, { type, payload }) => {
         isActive: true,
         header: payload.header,
         body: payload.body,
-        error: payload.error
-      }
+        error: payload.error,
+      };
       break;
-    
+
     case types.MODAL_INACTIVE:
       state = {
         isActive: false,
-        header: '',
-        body: '',
-        error: false
-      }
+        header: "",
+        body: "",
+        error: false,
+      };
       break;
     default:
-      return state
+      return state;
   }
-  return state
-}
+  return state;
+};
 
 const reducers = {
-    user: userReducer,
-    modal: modalReducer,
-}
+  user: userReducer,
+  modal: modalReducer,
+};
 
-export default combineReducers(reducers)
+export default combineReducers(reducers);

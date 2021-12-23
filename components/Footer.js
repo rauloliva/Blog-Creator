@@ -1,14 +1,14 @@
-import NavBarOptions from './NavBarOptions'
+import NavBarOptions from "./NavBarOptions";
 
 const Footer = () => {
-    const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
-    return (
-        <footer className='footer'>
-            <NavBarOptions section='footer'/>
-            <p className='footer__copy'>Raul Oliva &copy; { year }</p>
-        </footer>
-    )
-}
+  return (
+    <footer className="footer">
+      <NavBarOptions section="footer" />
+      <p className="footer__copy">Raul Oliva &copy; {year}</p>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;

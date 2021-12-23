@@ -1,70 +1,68 @@
 @mixin btnDefault {
-    display: block;
-    font-size: 1.2rem;
-    padding: 10px;
-    border-radius: 5px;
-    transition: .3s;
-    border: none;
-    cursor: pointer;
+  display: block;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
 }
 
 .btn {
-    
-    &__active {
-        @include btnDefault;
-        background-color: $primary-color;
+  &__active {
+    @include btnDefault;
+    background-color: $primary-color;
 
-        &:hover {
-            background-color: $third-color;
-            color: white;
-            transition: .3s;
-        }
+    &:hover {
+      background-color: $third-color;
+      color: white;
+      transition: 0.3s;
     }
-    
-    &__locked {
-        @include btnDefault;
-        cursor: default;
-        background-color: #eeeeee;
+  }
+
+  &__locked {
+    @include btnDefault;
+    cursor: default;
+    background-color: #eeeeee;
+  }
+
+  &__link {
+    display: block;
+    font-size: 1.25em;
+    font-weight: 500;
+    line-height: 2;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $third-color;
     }
+  }
 
-    &__link {
-        display: block;
-        font-size: 1.25em;
-        font-weight: 500;
-        line-height: 2;
-        text-align: center;
-        white-space: nowrap;
-        width: 100%;
-        text-decoration: none;
-        text-transform: uppercase;
+  &__error {
+    background-color: $color-error;
+    color: white;
 
-        &:hover {
-            background-color: $primary-color;
-            color: $third-color;
-        }
+    &:hover {
+      background-color: $color-bg-error;
+      color: black;
+      transition: 0.3s;
     }
+  }
 
-    &__error {
-        background-color: $color-error;
-        color: white;
+  &__color {
+    &-p-s {
+      background-color: $primary-color;
 
-        &:hover {
-            background-color: $color-bg-error;
-            color: black;
-            transition: .3s;
-        }
+      &:hover {
+        background-color: $secondary-color;
+        color: black;
+        transition: 0.3s;
+      }
     }
-
-    &__color {
-        &-p-s {
-            background-color: $primary-color;
-
-            &:hover {
-                background-color: $secondary-color;
-                color: black;
-                transition: .3s;
-            }
-            
-        }
-    }
+  }
 }

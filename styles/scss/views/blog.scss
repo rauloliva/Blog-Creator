@@ -1,144 +1,142 @@
 .nav {
+  margin: 0;
+  width: 100%;
+  position: sticky;
+  z-index: 9000;
+  top: 0;
+  background-color: $third-color;
+  color: $secondary-color;
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.5);
+
+  &__list {
     margin: 0;
-    width: 100%;
-    position: sticky;
-    z-index: 9000;
-    top: 0;
-    background-color: $third-color;
-    color: $secondary-color;
-    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    list-style: none;
+    display: flex;
 
-    &__list {
-        margin: 0;
-        padding: 1.5rem;
-        list-style: none;
-        display: flex;
+    & > li {
+      margin: 0 1rem;
+      padding: 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
 
-        & > li {
-            margin: 0 1rem;
-            padding: 0;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                color: $primary-color;
-            }
-        }
+      &:hover {
+        color: $primary-color;
+      }
     }
+  }
 }
 
 .blog {
-    width: 100%;
-    height: auto;
-    padding: 0 30%;
-    background-color: $secondary-color;
+  width: 100%;
+  height: auto;
+  padding: 0 30%;
+  background-color: $secondary-color;
 
-    & > hr {
-        background-color: $fourth-color;
-        height: 3px;
-        border: none;
-    }
+  & > hr {
+    background-color: $fourth-color;
+    height: 3px;
+    border: none;
+  }
 
-    &__box {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+  &__box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-    &__author {
-        display: flex;
-        column-gap: 1.3rem;
-    }
+  &__author {
+    display: flex;
+    column-gap: 1.3rem;
+  }
 
-    &__title-container {
-        background-color: $fourth-color;
-        color: $primary-color;
-        padding: 1rem 30%;
-    }
+  &__title-container {
+    background-color: $fourth-color;
+    color: $primary-color;
+    padding: 1rem 30%;
+  }
 
-    &__title {
-    }
+  &__title {
+  }
 
-    &__introduction {
-        margin: 2rem 0;
-        font-size: 18px;
-        line-height: 1.5;
-    }
+  &__introduction {
+    margin: 2rem 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
 
-    &__body {
-        margin: 2rem 0;
-        font-size: 16px;
+  &__body {
+    margin: 2rem 0;
+    font-size: 16px;
+  }
 
-    }
-
-    &__conclusion {
-        // margin: 2rem 0;
-    }
+  &__conclusion {
+    // margin: 2rem 0;
+  }
 }
 
 .author {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 
-    & > h2 {
-        font-size: 1.7em;
-    }
+  & > h2 {
+    font-size: 1.7em;
+  }
 
-    &__name {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: $fourth-color;
-    }
+  &__name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $fourth-color;
+  }
 
-    &__title {
-        font-size: 1.1em;
-        color: $fourth-color;
-        display: block;
-    }
+  &__title {
+    font-size: 1.1em;
+    color: $fourth-color;
+    display: block;
+  }
 
-    &__description {
-        font-size: 1.1em;
-        line-height: 1.625;
-    }
+  &__description {
+    font-size: 1.1em;
+    line-height: 1.625;
+  }
 }
 
-.footer  {
-    width: 100%;
-    background-color: $third-color;
-    color: $secondary-color;
-    bottom: 0;
+.footer {
+  width: 100%;
+  background-color: $third-color;
+  color: $secondary-color;
+  bottom: 0;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  &__copy {
     margin: 0;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.5rem;
+    padding: 0;
+    font-size: 1.2rem;
     font-weight: bold;
+    text-align: right;
+    margin-right: 2rem;
+  }
 
-    &__copy {
-        margin: 0;
-        padding: 0;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-align: right;
-        margin-right: 2rem;
-    }
+  & > a {
+    color: $primary-color;
+    text-decoration: none;
+  }
 
-    & > a {
-        color: $primary-color;
-        text-decoration: none;
-    }
+  & > a:hover {
+    color: $secondary-color;
+  }
 
-    & > a:hover {
-        color: $secondary-color;
-    }
+  & > a:active {
+    color: $third-color;
+  }
 
-    & > a:active {
-        color: $third-color;
-    }
-
-    & > a:visited {
-        color: $primary-color;
-    }
-
+  & > a:visited {
+    color: $primary-color;
+  }
 }
