@@ -440,6 +440,40 @@ textarea {
   color: #7fc8a9;
 }
 
+.dashboard {
+  width: 100%;
+  height: 100%;
+  background-color: #d5eebb;
+}
+.dashboard-header {
+  background-color: #444941;
+  color: #d5eebb;
+}
+.dashboard-header-title {
+  margin-top: 0;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+.dashboard
+  .dashboard-content
+  .dashboard-content-item
+  .dashboard-content-item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.dashboard
+  .dashboard-content
+  .dashboard-content-item
+  .dashboard-content-item-subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
 .not-found {
   background-color: #d5eebb;
   color: #5f7a61;

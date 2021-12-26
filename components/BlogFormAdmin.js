@@ -37,13 +37,18 @@ const BlogForm = (props) => {
   }, [user, blog]);
 
   const createBlogHandler = async () => {
-    const response = await request("/api/blog", "POST", {
-      title: title,
-      introduction: introduction,
-      body: body,
-      conclusion: conclusion,
-      author: author,
-    });
+    const response = await request(
+      "/api/blog",
+      "POST",
+      {
+        title: title,
+        introduction: introduction,
+        body: body,
+        conclusion: conclusion,
+        author: author,
+      },
+      (access_token = localStorage.getItem("access_token"))
+    );
 
     if (response.status === 201) {
       dispatch(

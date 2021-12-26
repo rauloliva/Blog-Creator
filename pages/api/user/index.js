@@ -1,10 +1,11 @@
+require("dotenv").config();
 const pgp = require("pg-promise")({ noWarnings: true });
+const jwt = require("jsonwebtoken");
 
 const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
 
 const userLogin = async (req, res) => {
   const method = req.method;
-
   if (method === "POST") {
     const response = await login(req);
     res.status(response.status).json(response);
@@ -22,7 +23,10 @@ const login = async (req) => {
     const user = await db.one(
       `SELECT * FROM public."Users" WHERE user_email = '${email}' AND user_password = '${password}'`
     );
-    response = { user, status: 200 };
+
+    const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN);
+
+    response = { user, access_token, status: 200 };
   } catch (error) {
     if (error.code == 0) {
       response = {

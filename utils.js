@@ -11,12 +11,22 @@ const getCircularReplacer = () => {
   };
 };
 
-export const request = (url, method, data = null) => {
+export const request = (
+  url,
+  method,
+  data = null,
+  action = "",
+  access_token = ""
+) => {
   return new Promise(async (resolve, reject) => {
     try {
       const responseObj = await fetch(url, {
         method: method,
         body: data && JSON.stringify(data, getCircularReplacer()),
+        headers: {
+          "action-type": action,
+          authorization: access_token,
+        },
       });
 
       const response = await responseObj.json();

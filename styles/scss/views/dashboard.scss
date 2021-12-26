@@ -1,2 +1,33 @@
 .dashboard {
+  width: 100%;
+  height: 100%;
+  background-color: $secondary-color;
+
+  &-header {
+    background-color: $fourth-color;
+    color: $secondary-color;
+
+    &-title {
+      margin-top: 0;
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+      padding: 1rem 0;
+    }
+  }
+  &-body {
+    .dashboard-content-item {
+      .dashboard-content-item-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .dashboard-content-item-subtitle {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }

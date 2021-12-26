@@ -26,13 +26,23 @@ const Welcome = () => {
 
     const { email, password } = formValues;
 
-    const data = await request("/api/user", "POST", {
-      email: email,
-      password: password,
-    });
+    const access_token = localStorage.getItem("access_token");
+
+    const data = await request(
+      "/api/user",
+      "POST",
+      {
+        email: email,
+        password: password,
+      },
+      "login",
+      access_token
+    );
 
     if (data.status === 200) {
       dispatch(userActions.setUser(data.user));
+      localStorage.setItem("access_token", data.access_token);
+
       router.replace(`${router.route}admin`);
     } else {
       setServerResCode(data.status);
