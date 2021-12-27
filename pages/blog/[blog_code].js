@@ -33,18 +33,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(path) {
   const blog_code = path.params.blog_code;
-  let blog = {},
-    author = {};
-
-  const fetchAuthor = async () => {
-    const res = await request(
-      `${global.API_URL}user/${blog.blog_user_id}`,
-      "GET"
-    );
-    if (res.status === 200) {
-      author = res.user;
-    }
-  };
+  let blog = {}
 
   const fetchBlog = async () => {
     const response = await request(
@@ -57,12 +46,10 @@ export async function getStaticProps(path) {
   };
 
   await fetchBlog();
-  await fetchAuthor();
 
   return {
     props: {
       blog: blog,
-      author: author,
     },
     revalidate: 10,
   };

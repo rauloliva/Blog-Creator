@@ -10,8 +10,10 @@ const MyBlogs = ({ user }) => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const response = await request(
-        "/api/blog/blogs-by-user/" + user.user_id,
-        "GET"
+        `/api/blog/blogs-by-user/${user.user_id}`,
+        'GET',
+        undefined,
+        'get-blogs-by-user'
       );
       if (response.status === 200) {
         setBlogs(response.blogs);
@@ -24,7 +26,7 @@ const MyBlogs = ({ user }) => {
   }, [user]);
 
   const goToBlogHandler = (blogCode) => {
-    router.push("edit-blog?blogCode=" + blogCode);
+    router.push(`edit-blog?blogCode=${blogCode}`);
   };
 
   console.log(blogs);

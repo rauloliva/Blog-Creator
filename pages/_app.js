@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import getStore from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import Image from "next/image";
+import Loading from '../components/Loading';
 
 function MyApp({ Component, pageProps }) {
   const { store, persistor } = getStore();
@@ -12,12 +12,7 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Suspense
-          fallback={
-            <div>
-              <Image src="/loading.gif" layout="fill" alt="" />
-            </div>
-          }
-        >
+          fallback={ <Loading /> } >
           <Component {...pageProps} />
         </Suspense>
       </PersistGate>

@@ -23,7 +23,7 @@ const retrieveBlog = async (req) => {
   try {
     const code = req.query.code;
     const blog = await db.any(
-      `SELECT * FROM public."Blogs" WHERE blog_code = '${code}'`
+      `SELECT * FROM public."Blogs" AS b inner join public."Users" as u on b.blog_user_id = u.user_id WHERE blog_code = '${code}'`
     );
     response = { status: 200, blog: blog[0] };
   } catch (err) {

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import moment from "moment";
 
-const BlogContent = ({ blog, author }) => {
+const BlogContent = ({ blog }) => {
   // create the paragraphs
   let blog_introduction, blog_body, blog_conclusion;
   if (blog.blog_body) {
@@ -21,7 +21,7 @@ const BlogContent = ({ blog, author }) => {
   const blog_creation_date = moment(blog.blog_creation_date).format(
     "MMM Do YY"
   );
-  const author_name = author.user_first_name + " " + author.user_last_name;
+  const author_name = blog.user_first_name + " " + blog.user_last_name;
 
   return (
     <Fragment>
@@ -46,8 +46,8 @@ const BlogContent = ({ blog, author }) => {
         <div className="author">
           <h2>Author</h2>
           <span className="author__name">{author_name}</span>
-          <span className="author__title">{author.user_title}</span>
-          <p className="author__description">{author.user_description}</p>
+          <span className="author__title">{blog.user_title}</span>
+          <p className="author__description">{blog.user_description}</p>
         </div>
       </div>
     </Fragment>
