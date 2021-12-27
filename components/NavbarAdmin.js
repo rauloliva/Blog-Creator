@@ -1,20 +1,19 @@
 import Link from "next/link";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { userActions } from "../store/actions";
 
 const NavbarAdmin = () => {
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const logOutHanlder = () => {
-    dispatch(userActions.setUser(null));
+    localStorage.removeItem("access_token");
     router.push("/");
   };
 
   return (
     <div className="nav__options">
-      <h1>Welcome</h1>
+      <Link href="/admin" passHref>
+        <h1 className="nav__init">Welcome</h1>
+      </Link>
 
       <Link href="/admin/profile">
         <a className="btn__link">My Profile</a>

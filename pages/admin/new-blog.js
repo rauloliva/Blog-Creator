@@ -4,11 +4,11 @@ const BlogForm = React.lazy(() => import("../../components/BlogFormAdmin"));
 const Loading = React.lazy(() => import("../../components/Loading"));
 import { request, global } from "../../utils";
 import Redirect from "./Redirect";
-import { Logger } from 'react-logger-lib';
+import { Logger } from "react-logger-lib";
 
 const NewBlog = () => {
-  const [ user, setUser ] = useState({});
-  const [ notAuth, setNotAuth ] = useState(false)
+  const [user, setUser] = useState({});
+  const [notAuth, setNotAuth] = useState(false);
 
   const fetchUser = useCallback(async () => {
     const access_token = localStorage.getItem("access_token");
@@ -20,34 +20,30 @@ const NewBlog = () => {
         "authenticate",
         access_token
       );
-      setUser( res.user );
+      setUser(res.user);
     } catch (error) {
-      Logger.of('URI.new-blog.request').error('Request failed: ', error);
-      setNotAuth(true)
+      Logger.of("URI.new-blog.request").error("Request failed: ", error);
+      setNotAuth(true);
     }
   }, []);
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchUser]);
 
   return (
     <Fragment>
-      {
-        user.user_id && (
-          <Layout>
-            <BlogForm user={user} />
-          </Layout>
-        )
-      }
+      {user.user_id && (
+        <Layout>
+          <BlogForm user={user} />
+        </Layout>
+      )}
 
-      { notAuth && <Redirect /> }
+      {notAuth && <Redirect />}
 
-      { (!user.user_id && !notAuth) && <Loading /> }
+      {!user.user_id && !notAuth && <Loading />}
     </Fragment>
   );
 };
-
-
 
 export default NewBlog;

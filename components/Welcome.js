@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Alert from "./Alert";
 import { request } from "../utils";
-import { Logger } from 'react-logger-lib';
+import { Logger } from "react-logger-lib";
 
 const Welcome = () => {
-  Logger.of('Home.Welcome').info('init welcome component');
+  Logger.of("Home.Welcome").info("init welcome component");
 
   const router = useRouter();
   const dispatch = useDispatch();

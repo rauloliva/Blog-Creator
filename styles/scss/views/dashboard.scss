@@ -16,18 +16,18 @@
       padding: 1rem 0;
     }
   }
+
   &-body {
-    .dashboard-content-item {
-      .dashboard-content-item-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-      }
-      .dashboard-content-item-subtitle {
-        font-size: 1rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-      }
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10%;
+    text-align: center;
+
+    &-text {
+      font-size: 1.6em;
+      color: $third-color;
+      font-weight: 500;
+      padding: 1rem 0;
     }
   }
 }

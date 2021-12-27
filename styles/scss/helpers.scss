@@ -2,6 +2,10 @@
   margin-top: 2rem;
 }
 
+.ml1 {
+  margin-left: 1rem;
+}
+
 .mauto {
   margin: auto;
 }
@@ -15,4 +19,8 @@
 
 .flex {
   display: flex;
+}
+
+.not-block {
+  display: inline-block !important;
 }

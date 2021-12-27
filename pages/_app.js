@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import getStore from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import Loading from '../components/Loading';
+import Loading from "../components/Loading";
 
 function MyApp({ Component, pageProps }) {
   const { store, persistor } = getStore();
@@ -11,8 +11,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Suspense
-          fallback={ <Loading /> } >
+        <Suspense fallback={<Loading />}>
           <Component {...pageProps} />
         </Suspense>
       </PersistGate>

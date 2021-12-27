@@ -1,4 +1,4 @@
-import { Logger } from 'react-logger-lib';
+import { Logger } from "react-logger-lib";
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -34,7 +34,7 @@ export const request = (
       const response = await responseObj.json();
       resolve(response);
     } catch (error) {
-      Logger.of(`API Request to ${url}`).error('Promise rejected: ', error);
+      Logger.of(`API Request to ${url}`).error("Promise rejected: ", error);
       reject(error);
     }
   });

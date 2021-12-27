@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 export function middleware(req) {
   const action = req.headers.get("action-type");
-    
+
   if (action !== "login") {
     const access_token = req.headers.get("authorization");
     if (!access_token) {

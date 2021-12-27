@@ -11,9 +11,9 @@ const MyBlogs = ({ user }) => {
     const fetchBlogs = async () => {
       const response = await request(
         `/api/blog/blogs-by-user/${user.user_id}`,
-        'GET',
+        "GET",
         undefined,
-        'get-blogs-by-user'
+        "get-blogs-by-user"
       );
       if (response.status === 200) {
         setBlogs(response.blogs);
@@ -46,7 +46,7 @@ const MyBlogs = ({ user }) => {
               onClick={() => goToBlogHandler(blog.blog_code)}
             >
               <h3 className="blogs__item__title">
-                {blog.blog_title.toUpperCase().substring(0, 40) + "..."}
+                {blog.blog_title.toUpperCase().substring(0, 30) + "..."}
               </h3>
               <p className="blogs__item__description">
                 {blog.blog_introduction.substring(0, 60) + "..."}

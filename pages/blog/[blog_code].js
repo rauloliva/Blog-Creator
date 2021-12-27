@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(path) {
   const blog_code = path.params.blog_code;
-  let blog = {}
+  let blog = {};
 
   const fetchBlog = async () => {
     const response = await request(
