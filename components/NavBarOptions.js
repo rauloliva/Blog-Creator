@@ -16,7 +16,7 @@ const NavBarOptions = ({ section }) => (
           </Link>
         </li>
         <li>
-          <Link href="/contact">
+          <Link href="/info/contact">
             <a>Contact</a>
           </Link>
         </li>

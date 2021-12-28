@@ -6,15 +6,11 @@ import BlogContent from "../../components/Blog";
 import { global } from "../../utils";
 
 const Blog = (props) => (
-  <Fragment>
-    <div className="blog__box">
-      <NavBar />
-
-      <BlogContent blog={props.blog} author={props.author} />
-
-      <Footer />
-    </div>
-  </Fragment>
+  <div className="blog__box">
+    <NavBar />
+    <BlogContent blog={props.blog} author={props.author} />
+    <Footer />
+  </div>
 );
 
 export async function getStaticPaths() {

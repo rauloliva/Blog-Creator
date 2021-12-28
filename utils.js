@@ -43,3 +43,10 @@ export const request = (
 export const global = {
   API_URL: "http://localhost:3000/api/",
 };
+
+export const icons = {
+  email:
+    "https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/100/000000/external-email-advertising-kiranshastry-lineal-color-kiranshastry-1.png",
+  facebook: "https://img.icons8.com/fluency/100/000000/facebook-new.png",
+  github: "https://img.icons8.com/ios-filled/100/000000/github.png",
+};
