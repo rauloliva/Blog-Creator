@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { request } from "../../utils";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";

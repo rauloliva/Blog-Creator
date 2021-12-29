@@ -30,7 +30,7 @@ const EditBlog = () => {
     if (blogCode) {
       fetchBlog();
     }
-  }, []);
+  }, [blogCode]);
 
   return (
     <Layout>

@@ -78,6 +78,11 @@ label {
   min-width: 70%;
 }
 
+.welcome__sign-up {
+  display: flex;
+  align-items: baseline;
+}
+
 .btn__active {
   display: block;
   font-size: 1.2rem;
@@ -143,10 +148,29 @@ label {
 
 .link {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
+  color: #7fc8a9;
+  font-size: 1.15em;
+}
+.link-dark {
+  color: #444941 !important;
 }
 .link:hover {
-  text-decoration: none;
+  text-decoration: underline;
+}
+.link-box {
+  display: flex;
+  cursor: pointer;
+}
+.link-box:hover .link-arrow {
+  transform: translateX(-1px);
+  transition: all 0.3s;
+}
+.link-arrow {
+  transform: translateX(-5px);
+  font-size: 1.6rem;
+  color: #7fc8a9;
+  transition: all 0.3s;
 }
 
 .alert {
@@ -506,6 +530,22 @@ textarea {
   font-size: 1.5em;
   font-weight: bold;
   line-height: 1.5em;
+}
+
+.recentBlogs {
+  background-color: #d5eebb;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.recentBlogs__container {
+  color: #f5f9ef;
+  padding: 0 1rem;
+  margin: 10px;
+  background-image: linear-gradient(to bottom right, #5f7a61, #444941);
+  width: 200px;
+  flex: 20%;
 }
 
 .not-found {

@@ -1,0 +1,20 @@
+.recentBlogs {
+  background-color: $secondary-color;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__container {
+    color: #f5f9ef;
+    padding: 0 1rem;
+    margin: 10px;
+    background-image: linear-gradient(
+      to bottom right,
+      $third-color,
+      $fourth-color
+    );
+    width: 200px;
+    flex: 20%;
+  }
+}

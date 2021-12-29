@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Alert from "./Alert";
 import { request } from "../utils";
 import { Logger } from "react-logger-lib";
+import LinkInternal from "./LinkInternal";
 
 const Welcome = () => {
   Logger.of("Home.Welcome").info("init welcome component");
@@ -99,11 +100,9 @@ const Welcome = () => {
           Log In
         </button>
 
-        <p>
+        <p className="welcome__sign-up">
           Do not have an account yet?&nbsp;
-          <Link href="/admin">
-            <a className="link">Sign Up</a>
-          </Link>
+          <LinkInternal href="/admin" text="Sign Up" className="link-dark" />
         </p>
 
         {serverResCode !== 200 && <Alert />}

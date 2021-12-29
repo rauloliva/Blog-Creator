@@ -1,0 +1,14 @@
+{
+  "googleFonts": {
+    "fonts": ["/fonts/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2"],
+    "style": "/*fallback*/@font-face{font-family:'MaterialIcons';font-style:normal;font-weight:400;src:url(/fonts/s/materialicons/v118/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)format('woff2');}.material-icons{font-family:'MaterialIcons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}"
+  },
+  "arguments": {
+    "fonts": ["https://fonts.googleapis.com/icon?family=Material+Icons"],
+    "publicFolder": "public",
+    "fontsFolder": "fonts",
+    "prevent": true,
+    "remove": true
+  },
+  "buildTime": "2021-12-29T04:04:31.771Z"
+}

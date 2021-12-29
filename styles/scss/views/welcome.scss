@@ -25,4 +25,9 @@
     flex-grow: 999;
     min-width: 70%;
   }
+
+  &__sign-up {
+    display: flex;
+    align-items: baseline;
+  }
 }

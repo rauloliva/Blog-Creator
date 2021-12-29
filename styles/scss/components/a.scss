@@ -1,8 +1,33 @@
 .link {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
+  color: $primary-color;
+  font-size: 1.15em;
+
+  &-dark {
+    color: $fourth-color !important;
+  }
 
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
+  }
+
+  &-box {
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+      .link-arrow {
+        transform: translateX(-1px);
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  &-arrow {
+    transform: translateX(-5px);
+    font-size: 1.6rem;
+    color: $primary-color;
+    transition: all 0.3s;
   }
 }

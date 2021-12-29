@@ -1,4 +1,9 @@
-module.exports = {
+const { withGoogleFonts } = require("nextjs-google-fonts");
+
+module.exports = withGoogleFonts({
+  googleFonts: {
+    fonts: ["https://fonts.googleapis.com/icon?family=Material+Icons"],
+  },
   images: {
     domains: ["img.icons8.com"],
   },
@@ -10,4 +15,4 @@ module.exports = {
     });
     return config;
   },
-};
+});
