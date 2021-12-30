@@ -1,4 +1,13 @@
 .nav {
+  margin: 0;
+  width: 100%;
+  position: sticky;
+  z-index: 9000;
+  top: 0;
+  background-color: $third-color;
+  color: $secondary-color;
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.5);
+
   &__container {
     height: 100vh;
     display: flex;
@@ -19,5 +28,38 @@
 
   &__init {
     cursor: pointer;
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.75em;
+
+    &-container {
+      background-color: $fourth-color;
+      color: $primary-color;
+      padding: 1rem 30%;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 1.5rem;
+    list-style: none;
+    display: flex;
+
+    & > li {
+      margin: 0 1rem;
+      padding: 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }

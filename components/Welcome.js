@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/actions";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import Alert from "./Alert";
 import { request } from "../utils";

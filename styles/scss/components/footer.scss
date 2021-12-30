@@ -1,0 +1,37 @@
+.footer {
+  width: 100%;
+  background-color: $third-color;
+  color: $secondary-color;
+  bottom: 0;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  &__copy {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 2rem;
+  }
+
+  & > a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  & > a:hover {
+    color: $secondary-color;
+  }
+
+  & > a:active {
+    color: $third-color;
+  }
+
+  & > a:visited {
+    color: $primary-color;
+  }
+}

@@ -49,4 +49,5 @@ export const icons = {
     "https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/100/000000/external-email-advertising-kiranshastry-lineal-color-kiranshastry-1.png",
   facebook: "https://img.icons8.com/fluency/100/000000/facebook-new.png",
   github: "https://img.icons8.com/ios-filled/100/000000/github.png",
+  instagram: "https://img.icons8.com/color/100/000000/instagram-new--v1.png",
 };

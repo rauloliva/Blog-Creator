@@ -4,7 +4,7 @@ import Loading from "../../components/Loading";
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const MyBlogsList = React.lazy(() => import("../../components/MyBlogs"));
 import { request, global } from "../../utils";
-import Redirect from "./Redirect";
+import Unauthorized from "./401";
 
 const MyBlogs = () => {
   const [user, setUser] = useState({});
@@ -39,7 +39,7 @@ const MyBlogs = () => {
         </Layout>
       )}
 
-      {notAuth && <Redirect />}
+      {notAuth && <Unauthorized />}
 
       {!user.user_id && !notAuth && <Loading />}
     </Fragment>

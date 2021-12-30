@@ -4,16 +4,28 @@ import { Fragment } from "react";
 const NavBarOptions = ({ section }) => {
   const access_token = localStorage.getItem("access_token");
 
-  let access_option = (
-    <Link href="/">
-      <a>Log In</a>
-    </Link>
+  let access_options = (
+    <Fragment>
+      <li>
+        <Link href="/">
+          <a>Log In</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/sign-up">
+          <a>Sign Up</a>
+        </Link>
+      </li>
+    </Fragment>
   );
+
   if (access_token) {
-    access_option = (
-      <Link href="/admin">
-        <a>Admin</a>
-      </Link>
+    access_options = (
+      <li>
+        <Link href="/admin">
+          <a>Admin</a>
+        </Link>
+      </li>
     );
   }
 
@@ -49,7 +61,14 @@ const NavBarOptions = ({ section }) => {
               <a>About</a>
             </Link>
           </li>
-          <li>{access_option}</li>
+
+          {access_options}
+
+          <li>
+            <Link href="/blog/search">
+              <a>Search</a>
+            </Link>
+          </li>
         </Fragment>
       )}
     </ul>

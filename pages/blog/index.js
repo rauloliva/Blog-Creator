@@ -8,8 +8,8 @@ import LinkInternal from "../../components/LinkInternal";
 const Main = (props) => (
   <Fragment>
     <NavBar />
-    <div className="contact__title-container">
-      <h1 className="contact__title">recent blogs</h1>
+    <div className="nav__title-container">
+      <h1 className="nav__title">recent blogs</h1>
     </div>
 
     <div className="recentBlogs">

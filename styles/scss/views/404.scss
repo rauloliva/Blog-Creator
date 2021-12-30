@@ -1,7 +1,8 @@
 .not-found {
   background-color: $secondary-color;
   color: $third-color;
-  height: 100%;
+  min-height: 80%;
+  max-height: fit-content;
   display: flex;
   flex-direction: column;
   font-weight: 700;

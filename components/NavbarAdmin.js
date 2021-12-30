@@ -27,6 +27,10 @@ const NavbarAdmin = () => {
         <a className="btn__link">My Blogs</a>
       </Link>
 
+      <Link href="/blog/search">
+        <a className="btn__link">Search Blogs</a>
+      </Link>
+
       <button
         className="btn__active btn__color-p-s mt2"
         onClick={logOutHanlder}

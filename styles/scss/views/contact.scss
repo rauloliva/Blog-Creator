@@ -1,19 +1,11 @@
 .contact {
   width: 100%;
-  height: auto;
-  padding: 0 37%;
+  min-height: 70%;
+  max-height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: $secondary-color;
-
-  &__title {
-    text-align: center;
-    text-transform: uppercase;
-
-    &-container {
-      background-color: $fourth-color;
-      color: $primary-color;
-      padding: 1rem 30%;
-    }
-  }
 
   &__container {
     padding: 3rem 0;

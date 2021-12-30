@@ -7,8 +7,8 @@ const Contact = () => {
   return (
     <Fragment>
       <NavBar />
-      <div className="contact__title-container">
-        <h1 className="contact__title">contact</h1>
+      <div className="nav__title-container">
+        <h1 className="nav__title">contact</h1>
       </div>
       <div className="contact">
         <div className="contact__container">
@@ -31,6 +31,13 @@ const Contact = () => {
             icon="github"
             title="Github"
             paragraph="rauloliva"
+          />
+
+          <ContactCard
+            href="https://www.instagram.com/raul_oliva_cas/"
+            icon="instagram"
+            title="Instagram"
+            paragraph="@raul_oliva_cas"
           />
         </div>
       </div>

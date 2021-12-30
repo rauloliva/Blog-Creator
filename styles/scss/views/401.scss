@@ -1,0 +1,14 @@
+.unauthorized {
+  width: 100%;
+  height: 100vh;
+  padding: 1rem 0;
+  background: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__title {
+    color: $color-error;
+    text-transform: uppercase;
+  }
+}

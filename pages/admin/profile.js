@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment, useCallback } from "react";
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 import { request, global } from "../../utils";
-import Redirect from "./Redirect";
+import Unauthorized from "./401";
 import Loading from "../../components/Loading";
 import { Logger } from "react-logger-lib";
 const ProfileForm = React.lazy(() =>
@@ -41,7 +41,7 @@ const Profile = () => {
         </Layout>
       )}
 
-      {notAuth && <Redirect />}
+      {notAuth && <Unauthorized />}
 
       {!user.user_id && !notAuth && <Loading />}
     </Fragment>

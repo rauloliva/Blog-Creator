@@ -22,8 +22,12 @@ const create = async (req) => {
       req.body
     );
     const blogCode = generateBlogCode(title);
+    const introduction_cleaned = introduction.replace(/'/g, "´");
+    const body_cleaned = body.replace(/'/g, "´");
+    const conclusion_cleaned = conclusion.replace(/'/g, "´");
+
     const result = await db.query(
-      `INSERT INTO public."Blogs" (blog_code, blog_title, blog_introduction, blog_body, blog_conclusion, blog_user_id) VALUES ('${blogCode}' ,'${title}', '${introduction}','${body}', '${conclusion}', ${author}) RETURNING *`
+      `INSERT INTO public."Blogs" (blog_code, blog_title, blog_introduction, blog_body, blog_conclusion, blog_user_id) VALUES ('${blogCode}' ,'${title}', '${introduction_cleaned}','${body_cleaned}', '${conclusion_cleaned}', ${author}) RETURNING *`
     );
 
     response = { status: 201, blog: result[0] };
@@ -36,7 +40,9 @@ const create = async (req) => {
 
 const generateBlogCode = (title) => {
   const random_num = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  return title.toUpperCase().replace(/ /g, "-") + "-" + random_num;
+  return (
+    title.toUpperCase().replace(/ /g, "-").replace("'", "´") + "-" + random_num
+  );
 };
 
 export default createBlog;

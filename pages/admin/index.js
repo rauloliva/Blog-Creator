@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState, useCallback } from "react";
 import { Logger } from "react-logger-lib";
 import Loading from "../../components/Loading";
-const Redirect = React.lazy(() => import("./Redirect"));
+const Unauthorized = React.lazy(() => import("./401"));
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const Dashboard = React.lazy(() => import("../../components/Dashboard"));
 import { request, global } from "../../utils";
@@ -41,7 +41,7 @@ export default function Admin() {
         </Fragment>
       )}
 
-      {notAuth && <Redirect />}
+      {notAuth && <Unauthorized />}
 
       {!user.user_id && !notAuth && <Loading />}
     </Fragment>

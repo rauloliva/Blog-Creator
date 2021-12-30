@@ -3,7 +3,7 @@ const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const BlogForm = React.lazy(() => import("../../components/BlogFormAdmin"));
 const Loading = React.lazy(() => import("../../components/Loading"));
 import { request, global } from "../../utils";
-import Redirect from "./Redirect";
+import Unauthorized from "./401";
 import { Logger } from "react-logger-lib";
 
 const NewBlog = () => {
@@ -39,7 +39,7 @@ const NewBlog = () => {
         </Layout>
       )}
 
-      {notAuth && <Redirect />}
+      {notAuth && <Unauthorized />}
 
       {!user.user_id && !notAuth && <Loading />}
     </Fragment>
