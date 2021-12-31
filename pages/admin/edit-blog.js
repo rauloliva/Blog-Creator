@@ -4,6 +4,11 @@ const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const BlogForm = React.lazy(() => import("../../components/BlogFormAdmin"));
 import { useRouter } from "next/router";
 import { request } from "../../utils";
+const metadata = {
+  pageTitle: "Edit Blog",
+  description: "Edit the selected blog",
+  keywords: "edit blog, modify blog, preview blog",
+}
 
 const defaultBlog = {
   title: "",
@@ -33,11 +38,7 @@ const EditBlog = () => {
   }, [blogCode]);
 
   return (
-    <Layout
-      pageTitle="Edit Blog"
-      description="Edit the selected blog"
-      keywords="edit blog, modify blog, preview blog"
-    >
+    <Layout {...metadata}>
       <BlogForm user={user} blog={blog} />
     </Layout>
   );

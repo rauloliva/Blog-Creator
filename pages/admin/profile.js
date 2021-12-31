@@ -6,6 +6,12 @@ const ProfileForm = React.lazy(() =>
   import("../../components/ProfileFormAdmin")
 );
 import { useAuthenticate } from "../../utils";
+const metadata = {
+  pageTitle: "Profile",
+  description: "The profile of the user",
+  keywords: "profile, edit, modify, user profile",
+}
+
 
 const Profile = () => {
   const access_token = localStorage.getItem("access_token");
@@ -18,11 +24,7 @@ const Profile = () => {
   return (
     <Fragment>
       {user.user_id && (
-        <Layout
-          pageTitle="Profile"
-          description="The profile of the user"
-          keywords="profile, edit, modify, user profile"
-        >
+        <Layout {...metadata}>
           <ProfileForm user={user} />
         </Layout>
       )}

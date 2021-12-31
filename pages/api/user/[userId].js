@@ -5,10 +5,8 @@ const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
 
 const user = async (req, res) => {
   const method = req.method;
-  console.log(method);
 
   if (method === "PATCH") {
-    console.log('NOW HERE');
     const response = await updateUser(req);
     res.status(response.status).json(response);
   } else if (method === "GET") {

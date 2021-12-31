@@ -6,6 +6,11 @@ const Unauthorized = React.lazy(() => import("./401"));
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const Dashboard = React.lazy(() => import("../../components/Dashboard"));
 import { useAuthenticate } from "../../utils";
+const metadata = {
+  pageTitle: "Welcome",
+  description: "Welcome page with admin options",
+  keywords: "create your blogs, dashboard, admin, admin options",
+}
 
 export default function Admin() {
   const access_token = localStorage.getItem("access_token");
@@ -19,11 +24,7 @@ export default function Admin() {
     <Fragment>
       {user.user_id && (
         <Fragment>
-          <Layout
-            pageTitle="Welcome"
-            description="welcome page with admin options"
-            keywords="create your blogs, dashboard, admin, admin options"
-          >
+          <Layout {...metadata}>
             <Dashboard user={user} />
           </Layout>
         </Fragment>
