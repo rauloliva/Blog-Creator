@@ -1,5 +1,7 @@
+import Head from "next/head";
 import React, { Fragment, useEffect } from "react";
 import Loading from "../../components/Loading";
+import Metadata from "../../components/Metadata";
 const Unauthorized = React.lazy(() => import("./401"));
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const Dashboard = React.lazy(() => import("../../components/Dashboard"));
@@ -17,7 +19,11 @@ export default function Admin() {
     <Fragment>
       {user.user_id && (
         <Fragment>
-          <Layout>
+          <Layout
+            pageTitle="Welcome"
+            description="welcome page with admin options"
+            keywords="create your blogs, dashboard, admin, admin options"
+          >
             <Dashboard user={user} />
           </Layout>
         </Fragment>

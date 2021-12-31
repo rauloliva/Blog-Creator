@@ -16,7 +16,11 @@ const MyBlogs = () => {
   return (
     <Fragment>
       {user.user_id && (
-        <Layout>
+        <Layout
+          pageTitle="My Blogs"
+          description="List all blogs created by the logged user"
+          keywords="blog list, own blogs, my blogs"
+        >
           <MyBlogsList user={user} />
         </Layout>
       )}

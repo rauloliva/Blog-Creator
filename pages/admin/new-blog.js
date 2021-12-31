@@ -16,7 +16,11 @@ const NewBlog = () => {
   return (
     <Fragment>
       {user.user_id && (
-        <Layout>
+        <Layout
+          pageTitle="New Blog"
+          description="Create a new blog"
+          keywords="create blog, create new blog, creation, blog"
+        >
           <BlogForm user={user} />
         </Layout>
       )}

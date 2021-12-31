@@ -18,7 +18,11 @@ const Profile = () => {
   return (
     <Fragment>
       {user.user_id && (
-        <Layout>
+        <Layout
+          pageTitle="Profile"
+          description="The profile of the user"
+          keywords="profile, edit, modify, user profile"
+        >
           <ProfileForm user={user} />
         </Layout>
       )}

@@ -1,5 +1,5 @@
 import { Logger } from "react-logger-lib";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -58,7 +58,7 @@ export const useAuthenticate = (access_token) => {
   const [user, setUser] = useState({});
   const [notAuth, setNotAuth] = useState(false);
 
-  const authenticate = async () => {
+  const authenticate = useCallback(async () => {
     try {
       const res = await request(
         `${global.API_URL}user`,
@@ -72,7 +72,11 @@ export const useAuthenticate = (access_token) => {
       Logger.of("URI.profile.request").error("Request failed: ", error);
       setNotAuth(true);
     }
-  };
+  }, [access_token]);
+
+  useEffect(() => {
+    authenticate();
+  }, [authenticate]);
 
   return [user, notAuth, authenticate];
 };

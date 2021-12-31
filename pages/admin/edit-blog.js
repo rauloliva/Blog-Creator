@@ -33,7 +33,11 @@ const EditBlog = () => {
   }, [blogCode]);
 
   return (
-    <Layout>
+    <Layout
+      pageTitle="Edit Blog"
+      description="Edit the selected blog"
+      keywords="edit blog, modify blog, preview blog"
+    >
       <BlogForm user={user} blog={blog} />
     </Layout>
   );
