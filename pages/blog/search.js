@@ -7,7 +7,13 @@ import { request, global } from "../../utils";
 import moment from "moment";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
+import Metadata from "../../components/Metadata";
 let inputSearch = "";
+const metadata = {
+  pageTitle: "Search Blog",
+  description: "Search blog by title",
+  keywords: "search blog, blog search, blog search by title",
+};
 
 const SearchBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -57,11 +63,6 @@ const SearchBlog = () => {
     results = <Loading />;
   }
 
-  let blogs_counter = 0;
-  if (blogs.length > 0) {
-    blogs_counter = blogs.length;
-  }
-
   const submitHandler = (e) => {
     e.preventDefault();
     search();
@@ -69,6 +70,7 @@ const SearchBlog = () => {
 
   return (
     <Fragment>
+      <Metadata {...metadata} />
       <NavBar />
       <div className="nav__title-container">
         <h1 className="nav__title">Search Blog</h1>

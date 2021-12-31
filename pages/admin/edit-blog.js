@@ -8,7 +8,7 @@ const metadata = {
   pageTitle: "Edit Blog",
   description: "Edit the selected blog",
   keywords: "edit blog, modify blog, preview blog",
-}
+};
 
 const defaultBlog = {
   title: "",

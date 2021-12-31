@@ -8,7 +8,7 @@ const metadata = {
   pageTitle: "My Blogs",
   description: "List all blogs created by the logged user",
   keywords: "blog list, own blogs, my blogs",
-}
+};
 
 const MyBlogs = () => {
   const access_token = localStorage.getItem("access_token");

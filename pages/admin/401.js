@@ -1,18 +1,18 @@
 import Image from "next/image";
 import { Fragment } from "react";
 import Footer from "../../components/Footer";
-import Metadata from '../../components/Metadata';
+import Metadata from "../../components/Metadata";
 import NavBar from "../../components/NavBar";
 const metadata = {
   pageTitle: "Access Denied",
   description: "The user does not have access to the page",
   keywords: "access denied, access, denied, access denied page",
-}
+};
 
 const Unauthorized = () => {
   return (
     <Fragment>
-      <Metadata {...metadata}/>
+      <Metadata {...metadata} />
       <NavBar />
       <div className="unauthorized">
         <h2 className="unauthorized__title">Access Denied</h2>

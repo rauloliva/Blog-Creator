@@ -2,10 +2,17 @@ import { Fragment } from "react";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import ContactCard from "../../components/ContactCard";
+import Metadata from "../../components/Metadata";
+const metadata = {
+  pageTitle: "Contact",
+  description: "Contact page of the developer",
+  keywords: "contact, developer, developer contact, contact page",
+};
 
 const Contact = () => {
   return (
     <Fragment>
+      <Metadata {...metadata} />
       <NavBar />
       <div className="nav__title-container">
         <h1 className="nav__title">contact</h1>

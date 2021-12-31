@@ -4,9 +4,15 @@ import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import BlogContent from "../../components/Blog";
 import { global } from "../../utils";
+import Metadata from "../../components/Metadata";
+const metadata = {
+  description: "List all blogs created from newest to oldest",
+  keywords: "blog list, blogs, recent blogs",
+};
 
 const Blog = (props) => (
   <div className="blog__box">
+    <Metadata {...metadata} pageTitle={props.blog.blog_title} />
     <NavBar />
     <BlogContent blog={props.blog} author={props.author} />
     <Footer />

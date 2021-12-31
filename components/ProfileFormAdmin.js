@@ -34,18 +34,23 @@ const ProfileForm = ({ user }) => {
   const saveHandler = async () => {
     const pwd = password.length > 0 ? password : user.user_password;
 
-    const response = await request("/api/user/" + user.user_id, "PATCH", {
-      user_first_name: firstName,
-      user_last_name: lastName,
-      user_email: email,
-      user_phone: phone,
-      user_birthday: brithday,
-      user_description: userDescription,
-      user_password: pwd,
-      user_creation_date: creation_date,
-      user_id: user.user_id,
-      user_title: title,
-    }, "update");
+    const response = await request(
+      "/api/user/" + user.user_id,
+      "PATCH",
+      {
+        user_first_name: firstName,
+        user_last_name: lastName,
+        user_email: email,
+        user_phone: phone,
+        user_birthday: brithday,
+        user_description: userDescription,
+        user_password: pwd,
+        user_creation_date: creation_date,
+        user_id: user.user_id,
+        user_title: title,
+      },
+      "update"
+    );
 
     if (response.status === 200) {
       dispatch(
@@ -71,8 +76,11 @@ const ProfileForm = ({ user }) => {
     <div className="form">
       <div className="form__container">
         <h2 className="title">my profile</h2>
-        <h3 >
-          Profile created <span className='color-grey'>{moment(creation_date).startOf("day").fromNow()}</span>
+        <h3>
+          Profile created{" "}
+          <span className="color-grey">
+            {moment(creation_date).startOf("day").fromNow()}
+          </span>
         </h3>
         <div className="form__item">
           <label htmlFor="name">First Name</label>

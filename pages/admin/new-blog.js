@@ -8,7 +8,7 @@ const metadata = {
   pageTitle: "New Blog",
   description: "Create a new blog",
   keywords: "create blog, create new blog, creation, blog",
-}
+};
 
 const NewBlog = () => {
   const access_token = localStorage.getItem("access_token");

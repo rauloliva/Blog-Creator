@@ -4,9 +4,16 @@ import { Fragment } from "react";
 import { request, global } from "../../utils";
 import moment from "moment";
 import LinkInternal from "../../components/LinkInternal";
+import Metadata from "../../components/Metadata";
+const metadata = {
+  pageTitle: "Recent Blogs",
+  description: "List all blogs created from newest to oldest",
+  keywords: "blog list, blogs, recent blogs",
+};
 
 const Main = (props) => (
   <Fragment>
+    <Metadata {...metadata} />
     <NavBar />
     <div className="nav__title-container">
       <h1 className="nav__title">recent blogs</h1>

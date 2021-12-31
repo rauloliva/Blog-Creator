@@ -10,8 +10,7 @@ const metadata = {
   pageTitle: "Profile",
   description: "The profile of the user",
   keywords: "profile, edit, modify, user profile",
-}
-
+};
 
 const Profile = () => {
   const access_token = localStorage.getItem("access_token");
