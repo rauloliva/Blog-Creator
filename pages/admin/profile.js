@@ -1,37 +1,19 @@
-import React, { useState, useEffect, Fragment, useCallback } from "react";
+import React, { useEffect, Fragment } from "react";
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
-import { request, global } from "../../utils";
 import Unauthorized from "./401";
 import Loading from "../../components/Loading";
-import { Logger } from "react-logger-lib";
 const ProfileForm = React.lazy(() =>
   import("../../components/ProfileFormAdmin")
 );
+import { useAuthenticate } from "../../utils";
 
 const Profile = () => {
-  const [user, setUser] = useState({});
-  const [notAuth, setNotAuth] = useState(false);
-
-  const fetchUser = useCallback(async () => {
-    const access_token = localStorage.getItem("access_token");
-    try {
-      const res = await request(
-        `${global.API_URL}user`,
-        "GET",
-        undefined,
-        "authenticate",
-        access_token
-      );
-      setUser(res.user);
-    } catch (error) {
-      Logger.of("URI.profile.request").error("Request failed: ", error);
-      setNotAuth(true);
-    }
-  }, []);
+  const access_token = localStorage.getItem("access_token");
+  const [user, notAuth, authenticate] = useAuthenticate(access_token);
 
   useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+    authenticate();
+  }, [authenticate]);
 
   return (
     <Fragment>

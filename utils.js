@@ -1,4 +1,5 @@
 import { Logger } from "react-logger-lib";
+import { useState } from "react";
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -50,4 +51,28 @@ export const icons = {
   facebook: "https://img.icons8.com/fluency/100/000000/facebook-new.png",
   github: "https://img.icons8.com/ios-filled/100/000000/github.png",
   instagram: "https://img.icons8.com/color/100/000000/instagram-new--v1.png",
+};
+
+// custom hook to authenticate the user with the access token
+export const useAuthenticate = (access_token) => {
+  const [user, setUser] = useState({});
+  const [notAuth, setNotAuth] = useState(false);
+
+  const authenticate = async () => {
+    try {
+      const res = await request(
+        `${global.API_URL}user`,
+        "GET",
+        undefined,
+        "authenticate",
+        access_token
+      );
+      setUser(res.user);
+    } catch (error) {
+      Logger.of("URI.profile.request").error("Request failed: ", error);
+      setNotAuth(true);
+    }
+  };
+
+  return [user, notAuth, authenticate];
 };

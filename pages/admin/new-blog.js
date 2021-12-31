@@ -1,35 +1,17 @@
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const BlogForm = React.lazy(() => import("../../components/BlogFormAdmin"));
 const Loading = React.lazy(() => import("../../components/Loading"));
-import { request, global } from "../../utils";
 import Unauthorized from "./401";
-import { Logger } from "react-logger-lib";
+import { useAuthenticate } from "../../utils";
 
 const NewBlog = () => {
-  const [user, setUser] = useState({});
-  const [notAuth, setNotAuth] = useState(false);
-
-  const fetchUser = useCallback(async () => {
-    const access_token = localStorage.getItem("access_token");
-    try {
-      const res = await request(
-        `${global.API_URL}user`,
-        "GET",
-        undefined,
-        "authenticate",
-        access_token
-      );
-      setUser(res.user);
-    } catch (error) {
-      Logger.of("URI.new-blog.request").error("Request failed: ", error);
-      setNotAuth(true);
-    }
-  }, []);
+  const access_token = localStorage.getItem("access_token");
+  const [user, notAuth, authenticate] = useAuthenticate(access_token);
 
   useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+    authenticate();
+  }, [authenticate]);
 
   return (
     <Fragment>
