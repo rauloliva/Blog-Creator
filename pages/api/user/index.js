@@ -1,6 +1,7 @@
 require("dotenv").config();
 const pgp = require("pg-promise")({ noWarnings: true });
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
 
@@ -20,13 +21,22 @@ const login = async (req) => {
   let response;
   try {
     const { email, password } = JSON.parse(req.body);
+
     const user = await db.one(
-      `SELECT * FROM public."Users" WHERE user_email = '${email}' AND user_password = '${password}'`
+      `SELECT * FROM public."Users" WHERE user_email = '${email}'`
     );
 
-    const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN);
-
-    response = { user, access_token, status: 200 };
+    if (user) {
+      const result = await bcrypt.compare(password, user.user_password);
+      if (result) {
+        const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN);
+        response = { user, access_token, status: 200 };
+      } else {
+        response = { message: "The Credentials are incorrect", status: 401 };
+      }
+    } else {
+      response = { message: "The Credentials are incorrect", status: 401 };
+    }
   } catch (error) {
     if (error.code == 0) {
       response = {

@@ -1,12 +1,15 @@
 .form {
-  width: 85%;
+  width: 100%;
   background-color: $secondary-color;
+  display: flex;
+  justify-content: center;
+  padding-left: 20%;
+  height: fit-content;
+  min-height: 100%;
 
   &__container {
     width: 40%;
-    margin: auto;
-    overflow-y: auto;
-    height: 90%;
+    height: 100%;
   }
 
   &__item {

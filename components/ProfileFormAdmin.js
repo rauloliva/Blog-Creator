@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { userActions } from "../store/actions";
 import { request } from "../utils";
 import { modalActions } from "../store/actions";
-import moment from 'moment';
+import moment from "moment";
 
 const ProfileForm = ({ user }) => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const ProfileForm = ({ user }) => {
       user_creation_date: creation_date,
       user_id: user.user_id,
       user_title: title,
-    });
+    }, "update");
 
     if (response.status === 200) {
       dispatch(
@@ -71,7 +71,9 @@ const ProfileForm = ({ user }) => {
     <div className="form">
       <div className="form__container">
         <h2 className="title">my profile</h2>
-        <h3>Profile created {moment(creation_date).startOf('day').fromNow()}</h3>
+        <h3 >
+          Profile created <span className='color-grey'>{moment(creation_date).startOf("day").fromNow()}</span>
+        </h3>
         <div className="form__item">
           <label htmlFor="name">First Name</label>
           <input

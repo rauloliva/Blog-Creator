@@ -6,7 +6,7 @@ const NavBarOptions = ({ section }) => {
 
   let access_options = (
     <Fragment>
-      <li className='mlauto'>
+      <li className="mlauto">
         <Link href="/">
           <a>Log In</a>
         </Link>
@@ -21,7 +21,7 @@ const NavBarOptions = ({ section }) => {
 
   if (access_token) {
     access_options = (
-      <li className='mlauto'>
+      <li className="mlauto">
         <Link href="/admin">
           <a>Admin</a>
         </Link>
