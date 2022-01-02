@@ -101,7 +101,7 @@ const Welcome = () => {
 
         <p className="welcome__sign-up">
           Do not have an account yet?&nbsp;
-          <LinkInternal href="/admin" text="Sign Up" className="link-dark" />
+          <LinkInternal href="/sign-up" text="Sign Up" className="link-dark" />
         </p>
 
         {serverResCode !== 200 && <Alert />}

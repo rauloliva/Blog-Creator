@@ -1,0 +1,56 @@
+const pgp = require("pg-promise")({ noWarnings: true });
+const bcrypt = require("bcrypt");
+
+const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+
+const signUp = async (req, res) => {
+  const method = req.method;
+
+  if (method === "POST") {
+    const response = await insertUser(req);
+    res.status(response.status).json(response);
+  } else {
+    return res
+      .status(405)
+      .json({ message: "This endpoint only uses PATCH method" });
+  }
+};
+
+const insertUser = async (req) => {
+  let response;
+  try {
+    const formData = JSON.parse(req.body);
+    const {
+      user_first_name,
+      user_last_name,
+      user_email,
+      user_phone,
+      user_birthday,
+      user_description,
+      user_password,
+      user_title,
+    } = formData;
+
+    const password_hashed = await bcrypt.hash(user_password, 10);
+
+    const user = await db.one(
+      `INSERT INTO public."Users" (user_first_name, user_last_name, user_email, user_phone, user_birthday, user_description, user_password, user_title, user_status) VALUES ('${user_first_name}', '${user_last_name}', '${user_email}', '${user_phone}', '${user_birthday}', '${user_description}', '${password_hashed}', '${user_title}', 'ACTIVE') RETURNING *`
+    );
+
+    response = { user: user, status: 201 };
+  } catch (error) {
+    if (error.code == 0) {
+      response = { message: "User not found", error: error, status: 401 };
+    } else {
+      response = {
+        message: "Server internal error",
+        error: error,
+        status: 500,
+      };
+    }
+  }
+
+  return response;
+};
+
+export default signUp;

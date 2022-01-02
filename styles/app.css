@@ -19,6 +19,9 @@ a {
 * {
   box-sizing: border-box;
 }
+*::selection {
+  background-color: #d3f123;
+}
 
 label {
   font-size: 1.15rem;
@@ -57,6 +60,10 @@ label {
 
 .color-grey {
   color: #444941;
+}
+
+.flex-direction-col {
+  flex-direction: column;
 }
 
 .welcome__container {
@@ -208,11 +215,6 @@ input {
   border: 1px solid #444941;
 }
 
-textarea {
-  font-size: 1.15em;
-  padding: 0.3rem;
-}
-
 .form {
   width: 100%;
   background-color: #d5eebb;
@@ -231,6 +233,13 @@ textarea {
   align-items: baseline;
   margin-bottom: 1rem;
 }
+.form__item > textarea {
+  width: 100%;
+  height: 6em;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 1.15em;
+}
 .form h2 {
   text-transform: uppercase;
 }
@@ -244,11 +253,22 @@ textarea {
   border-radius: 0.5rem;
   text-align: center;
 }
-.form textarea {
+.form__sign-up {
   width: 100%;
-  height: 100px;
-  border-radius: 0.5rem;
-  font-family: inherit;
+  background-color: #d5eebb;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  column-gap: 5rem;
+  padding: 2% 3%;
+}
+.form__sign-up-container {
+  background-color: #d5eebb;
+  width: 100%;
+  display: flex;
+  padding: 0;
+  min-height: 70%;
+  max-height: fit-content;
 }
 
 .modal {

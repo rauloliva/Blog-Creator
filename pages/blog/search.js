@@ -54,7 +54,7 @@ const SearchBlog = () => {
           <p>{blog.blog_introduction.substring(0, 230) + "..."}</p>
           <p>{blog_creation_date}</p>
           <p>
-            <LinkInternal href={`${blog.blog_code}`} text="Read More" />
+            <LinkInternal href={`/blog/${blog.blog_code}`} text="Read More" />
           </p>
         </div>
       );
