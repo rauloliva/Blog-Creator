@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")({ noWarnings: true });
+const { Database } = require("../db");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const createBlog = async (req, res) => {
   const method = req.method;
@@ -30,7 +30,7 @@ const create = async (req) => {
       `INSERT INTO public."Blogs" (blog_code, blog_title, blog_introduction, blog_body, blog_conclusion, blog_user_id) VALUES ('${blogCode}' ,'${title}', '${introduction_cleaned}','${body_cleaned}', '${conclusion_cleaned}', ${author}) RETURNING *`
     );
 
-    response = { status: 201, blog: result[0] };
+    response = { status: 201, blog: result };
   } catch (error) {
     console.error(error);
     response = { status: 500, message: error };

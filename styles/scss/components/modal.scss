@@ -45,6 +45,11 @@
     font-size: 1.2em;
   }
 
+  &__footer {
+    display: flex;
+    column-gap: 1.8rem;
+  }
+
   &--error {
     & > .modal__header {
       background-color: $color-error;

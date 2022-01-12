@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")({ noWarnings: true });
+const { Database } = require("../db");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const getRecentBlogs = async (req, res) => {
   const method = req.method;
@@ -19,7 +19,7 @@ const retrieveBlogs = async (req) => {
   const blogTitle = req.query.blogTitle;
   let response;
   try {
-    const result = await db.any(
+    const result = await db.query(
       `SELECT * FROM public."Blogs" WHERE LOWER(blog_title) LIKE LOWER('%${blogTitle}%') ORDER BY blog_id`
     );
 

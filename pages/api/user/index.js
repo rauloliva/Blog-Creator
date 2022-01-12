@@ -1,12 +1,16 @@
 require("dotenv").config();
-const pgp = require("pg-promise")({ noWarnings: true });
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { Database } = require("../db");
+const { loggerConstructor } = require("../logger");
+const logger = loggerConstructor("user / index");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const userLogin = async (req, res) => {
   const method = req.method;
+  logger.info(`${method} requesting to /api/user/index`);
+
   if (method === "POST") {
     const response = await login(req);
     res.status(response.status).json(response);
@@ -22,7 +26,7 @@ const login = async (req) => {
   try {
     const { email, password } = JSON.parse(req.body);
 
-    const user = await db.one(
+    const user = await db.query(
       `SELECT * FROM public."Users" WHERE user_email = '${email}'`
     );
 

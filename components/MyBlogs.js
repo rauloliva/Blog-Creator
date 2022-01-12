@@ -37,30 +37,32 @@ const MyBlogs = ({ user }) => {
         <h2 className="title">My Blogs</h2>
       </div>
       <div className="blogs__container">
-        {blogs.map((blog) => {
-          const date = new Date(blog.blog_creation_date);
-          return (
-            <div
-              className="blogs__item"
-              key={blog.blog_id}
-              onClick={() => goToBlogHandler(blog.blog_code)}
-            >
-              <h3 className="blogs__item__title">
-                {blog.blog_title.toUpperCase().substring(0, 30) + "..."}
-              </h3>
-              <p className="blogs__item__description">
-                {blog.blog_introduction.substring(0, 60) + "..."}
-              </p>
-              <p className="blogs__item__date">
-                {date.getFullYear() +
-                  "-" +
-                  (date.getMonth() + 1) +
-                  "-" +
-                  date.getDate()}
-              </p>
-            </div>
-          );
-        })}
+        <div className="blogs__row">
+          {blogs.map((blog) => {
+            const date = new Date(blog.blog_creation_date);
+            return (
+              <div
+                className="blogs__item"
+                key={blog.blog_id}
+                onClick={() => goToBlogHandler(blog.blog_code)}
+              >
+                <h3 className="blogs__item__title">
+                  {blog.blog_title.toUpperCase().substring(0, 30) + "..."}
+                </h3>
+                <p className="blogs__item__description">
+                  {blog.blog_introduction.substring(0, 60) + "..."}
+                </p>
+                <p className="blogs__item__date">
+                  {date.getFullYear() +
+                    "-" +
+                    (date.getMonth() + 1) +
+                    "-" +
+                    date.getDate()}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

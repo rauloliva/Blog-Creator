@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
 const Layout = React.lazy(() => import("../../components/LayoutAdmin"));
 const BlogForm = React.lazy(() => import("../../components/BlogFormAdmin"));
 import { useRouter } from "next/router";
@@ -20,7 +19,6 @@ const defaultBlog = {
 const EditBlog = () => {
   const router = useRouter();
   const blogCode = router.query.blogCode;
-  const user = useSelector((state) => state.user).user;
 
   const [blog, setBlog] = React.useState(defaultBlog);
 
@@ -39,7 +37,7 @@ const EditBlog = () => {
 
   return (
     <Layout {...metadata}>
-      <BlogForm user={user} blog={blog} />
+      <BlogForm user={{}} blog={blog} />
     </Layout>
   );
 };

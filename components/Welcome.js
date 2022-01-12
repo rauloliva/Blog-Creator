@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { userActions } from "../store/actions";
 import { useRouter } from "next/router";
 import Alert from "./Alert";
 import { request } from "../utils";
@@ -11,7 +9,6 @@ const Welcome = () => {
   Logger.of("Home.Welcome").info("init welcome component");
 
   const router = useRouter();
-  const dispatch = useDispatch();
 
   const [btnStyle, setBtnStyle] = useState("btn__locked");
   const [serverResCode, setServerResCode] = useState(200);
@@ -43,7 +40,6 @@ const Welcome = () => {
     );
 
     if (data.status === 200) {
-      dispatch(userActions.setUser(data.user));
       localStorage.setItem("access_token", data.access_token);
 
       router.replace(`${router.route}admin`);

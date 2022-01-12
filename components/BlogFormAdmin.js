@@ -102,6 +102,47 @@ const BlogForm = (props) => {
     }
   };
 
+  const deleteBlogHandler = () => {
+    const deleteBlog = async () => {
+      const response = await request(
+        `/api/blog/blog_code/${blog.blog_code}`,
+        "DELETE"
+      );
+
+      if (response.status === 200) {
+        dispatch(
+          modalActions.setModal(true, {
+            header: "blog deleted",
+            body: `Your blog "${blog.blog_code}" was deleted successfully`,
+            error: false,
+          })
+        );
+        setTimeout(() => {
+          router.replace("my-blogs");
+        }, 200);
+      } else {
+        dispatch(
+          modalActions.setModal(true, {
+            header: "deleting your blog failed",
+            body: "Your blog could not be deleted",
+            error: true,
+          })
+        );
+      }
+    };
+
+    dispatch(
+      modalActions.setModal(true, {
+        header: "delete blog",
+        body: `Are you sure you want to delete this blog '${title}'?`,
+        error: false,
+        action: async () => {
+          await deleteBlog();
+        },
+      })
+    );
+  };
+
   const previewHandler = () => {
     router.push("/blog/" + blog.blog_code);
   };
@@ -157,6 +198,9 @@ const BlogForm = (props) => {
             </button>
             <button className="btn__active mauto" onClick={updateBlogHandler}>
               Update
+            </button>
+            <button className="btn__active mauto" onClick={deleteBlogHandler}>
+              Delete
             </button>
           </div>
         ) : (

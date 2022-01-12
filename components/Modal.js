@@ -1,12 +1,21 @@
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../store/actions";
+let actionCb;
 
 const Modal = () => {
   const dispatch = useDispatch();
 
-  const { isActive, header, body, error } = useSelector((state) => state.modal);
+  const [enableAction, setEnableAction] = useState(false);
 
-  const modalHandler = (e) => {
+  const { isActive, header, body, error, action } = useSelector(
+    (state) => state.modal
+  );
+  if (action) {
+    actionCb = action;
+  }
+
+  const modalHandler = useCallback((e) => {
     const container = e.target.className;
     if (
       container === "modal modal--active" ||
@@ -14,7 +23,16 @@ const Modal = () => {
     ) {
       dispatch(modalActions.setModal(false, { header: "", body: "" }));
     }
+  }, []);
+
+  const actionHandler = () => {
+    setEnableAction(true);
   };
+
+  if (!isActive && actionCb && enableAction) {
+    actionCb();
+    setEnableAction(false);
+  }
 
   return (
     <div
@@ -34,8 +52,19 @@ const Modal = () => {
           )}
         </div>
         <div className="modal__footer">
+          {action && (
+            <button
+              className={`btn__active not-block`}
+              onClick={(e) => {
+                modalHandler(e);
+                actionHandler();
+              }}
+            >
+              Proceed
+            </button>
+          )}
           <button
-            className={`btn__active ${error ? "btn__error" : ""}`}
+            className={`btn__active not-block ${error ? "btn__error" : ""}`}
             onClick={modalHandler}
           >
             Close

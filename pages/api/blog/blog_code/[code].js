@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")({ noWarnings: true });
+const { Database } = require("../../db");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const getBlogs = async (req, res) => {
   const method = req.method;
@@ -10,6 +10,9 @@ const getBlogs = async (req, res) => {
     res.status(response.status).json(response);
   } else if (method === "PUT") {
     const response = await updateBlog(req);
+    res.status(response.status).json(response);
+  } else if (method === "DELETE") {
+    const response = await deleteBlog(req.query.code);
     res.status(response.status).json(response);
   } else {
     return res
@@ -22,10 +25,11 @@ const retrieveBlog = async (req) => {
   let response;
   try {
     const code = req.query.code;
-    const blog = await db.any(
+    const blog = await db.query(
       `SELECT * FROM public."Blogs" AS b inner join public."Users" as u on b.blog_user_id = u.user_id WHERE blog_code = '${code}'`
     );
-    response = { status: 200, blog: blog[0] };
+
+    response = { status: 200, blog: blog };
   } catch (err) {
     response = {
       status: 500,
@@ -44,10 +48,25 @@ const updateBlog = async (req) => {
     if (!validateTitle(code, title)) {
       newCode = generateBlogCode(title);
     }
-    await db.none(`UPDATE public."Blogs" SET blog_code = '${newCode}', blog_title = '${title}', blog_introduction = '${introduction}',
+    await db.query(`UPDATE public."Blogs" SET blog_code = '${newCode}', blog_title = '${title}', blog_introduction = '${introduction}',
          blog_body = '${body}', blog_conclusion = '${conclusion}' WHERE blog_code = '${code}'`);
 
     response = { status: 200, blog_title: title, blog_code: newCode };
+  } catch (err) {
+    response = {
+      status: 500,
+      message: err.message,
+    };
+  }
+  return response;
+};
+
+const deleteBlog = async (code) => {
+  let response;
+  try {
+    await db.query(`DELETE FROM public."Blogs" WHERE blog_code = '${code}'`);
+
+    response = { status: 200 };
   } catch (err) {
     response = {
       status: 500,

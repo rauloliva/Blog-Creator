@@ -22,12 +22,19 @@
     flex-wrap: wrap;
     justify-content: space-around;
     column-gap: 1rem;
-    list-style: none;
     align-items: stretch;
 
     & h3 {
       margin-top: 0rem;
     }
+  }
+
+  &__row {
+    display: flex;
+    height: fit-content;
+    column-gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__item {
@@ -39,7 +46,7 @@
     padding: 1rem;
     cursor: pointer;
     transition: all 0.3s;
-    max-height: 30%;
+    height: auto;
     max-width: 200px;
 
     &:hover {

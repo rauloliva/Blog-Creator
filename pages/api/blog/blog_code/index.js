@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")({ noWarnings: true });
+const { Database } = require("../../db");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const retrieveAllCodes = async (req, res) => {
   const method = req.method;
@@ -18,7 +18,7 @@ const retrieveAllCodes = async (req, res) => {
 const retrieveBlogs = async () => {
   let response;
   try {
-    const blog = await db.any(`SELECT blog_code FROM public."Blogs"`);
+    const blog = await db.query(`SELECT blog_code FROM public."Blogs"`);
     response = { status: 200, blog_codes: blog };
   } catch (err) {
     response = {

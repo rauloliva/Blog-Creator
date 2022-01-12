@@ -1,0 +1,24 @@
+.author {
+  margin-bottom: 2rem;
+
+  & > h2 {
+    font-size: 1.7em;
+  }
+
+  &__name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $fourth-color;
+  }
+
+  &__title {
+    font-size: 1.1em;
+    color: $fourth-color;
+    display: block;
+  }
+
+  &__description {
+    font-size: 1.1em;
+    line-height: 1.625;
+  }
+}

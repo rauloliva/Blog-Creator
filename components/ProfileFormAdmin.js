@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { userActions } from "../store/actions";
 import { request } from "../utils";
 import { modalActions } from "../store/actions";
 import moment from "moment";
@@ -60,7 +59,6 @@ const ProfileForm = ({ user }) => {
           error: false,
         })
       );
-      dispatch(userActions.setUser(response.user));
     } else {
       dispatch(
         modalActions.setModal(true, {

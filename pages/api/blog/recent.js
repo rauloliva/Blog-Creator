@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")({ noWarnings: true });
+const { Database } = require("../db");
 
-const db = pgp(`postgres://rauloliva:raulito10@localhost:5433/blog_creator`);
+const db = new Database();
 
 const getRecentBlogs = async (req, res) => {
   const method = req.method;
@@ -18,7 +18,7 @@ const getRecentBlogs = async (req, res) => {
 const retrieveBlogs = async () => {
   let response;
   try {
-    const result = await db.any(
+    const result = await db.query(
       `SELECT * FROM public."Blogs" ORDER BY blog_id DESC LIMIT 12`
     );
 
