@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { Database } = require("../db");
 const { loggerConstructor } = require("../logger");
-const logger = loggerConstructor("database");
+const logger = loggerConstructor("user / signup");
 
 const db = new Database();
 
@@ -44,9 +44,13 @@ const insertUser = async (req) => {
 
     response = { user: user, status: 201 };
   } catch (error) {
-    logger.error(error);
+    logger.error(`Error creating the user ${error}`);
     if (error.code == 0) {
-      response = { message: "User not found", error: error, status: 401 };
+      response = {
+        message: "User could not be created",
+        error: error,
+        status: 401,
+      };
     } else {
       response = {
         message: "Server internal error",

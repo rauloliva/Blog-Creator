@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { Database } = require("../db");
 const { loggerConstructor } = require("../logger");
-const logger = loggerConstructor("database");
+const logger = loggerConstructor("user / [userId]");
 
 const db = new Database();
 

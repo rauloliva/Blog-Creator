@@ -1,9 +1,11 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { request } from "../utils";
 import { modalActions } from "../store/actions";
+import { useRouter } from "next/router";
 
 const SignUpForm = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const [firstName, setFirstName] = useState("");
@@ -14,6 +16,12 @@ const SignUpForm = () => {
   const [userDescription, setUserDescription] = useState("");
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
+
+  const redirectLogin = useCallback(() => {
+    setTimeout(() => {
+      router.replace("/");
+    }, 200);
+  }, []);
 
   const saveHandler = async () => {
     const pwd = password.length > 0 ? password : user.user_password;
@@ -38,17 +46,28 @@ const SignUpForm = () => {
       if (response.status === 201) {
         dispatch(
           modalActions.setModal(true, {
-            header: "profile updated",
+            header: "profile created",
             body: "Your profile was created successfully",
             error: false,
+            actions: [
+              {
+                label: "Accept",
+                onClick: async () => await redirectLogin(),
+              },
+            ],
           })
         );
       } else {
         dispatch(
           modalActions.setModal(true, {
-            header: "update failed",
-            body: "Your profile was not created",
+            header: "profile not created",
+            body: "Your profile could not be created",
             error: true,
+            actions: [
+              {
+                label: "Close",
+              },
+            ],
           })
         );
       }
@@ -58,6 +77,11 @@ const SignUpForm = () => {
           header: "update failed",
           body: "Your profile was not created",
           error: true,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
     }

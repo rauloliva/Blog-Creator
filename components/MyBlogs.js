@@ -16,7 +16,11 @@ const MyBlogs = ({ user }) => {
         "get-blogs-by-user"
       );
       if (response.status === 200) {
-        setBlogs(response.blogs);
+        if (Array.isArray(response.blogs)) {
+          setBlogs(response.blogs);
+        } else {
+          setBlogs([response.blogs]);
+        }
       }
     };
 
@@ -28,8 +32,6 @@ const MyBlogs = ({ user }) => {
   const goToBlogHandler = (blogCode) => {
     router.push(`edit-blog?blogCode=${blogCode}`);
   };
-
-  console.log(blogs);
 
   return (
     <div className="blogs">

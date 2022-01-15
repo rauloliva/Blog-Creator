@@ -1,9 +1,12 @@
 const { Database } = require("../db");
+const { loggerConstructor } = require("../logger");
+const logger = loggerConstructor("blog / index");
 
 const db = new Database();
 
 const createBlog = async (req, res) => {
   const method = req.method;
+  logger.info(`${method} requesting to /api/blog/index`);
 
   if (method === "POST") {
     const response = await create(req);

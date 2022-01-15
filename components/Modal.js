@@ -8,12 +8,9 @@ const Modal = () => {
 
   const [enableAction, setEnableAction] = useState(false);
 
-  const { isActive, header, body, error, action } = useSelector(
+  const { isActive, header, body, error, actions } = useSelector(
     (state) => state.modal
   );
-  if (action) {
-    actionCb = action;
-  }
 
   const modalHandler = useCallback((e) => {
     const container = e.target.className;
@@ -23,15 +20,33 @@ const Modal = () => {
     ) {
       dispatch(modalActions.setModal(false, { header: "", body: "" }));
     }
-  }, []);
-
-  const actionHandler = () => {
-    setEnableAction(true);
-  };
+  }, [ dispatch ]);
 
   if (!isActive && actionCb && enableAction) {
     actionCb();
     setEnableAction(false);
+  }
+
+  let btnOptions;
+  if (actions) {
+    btnOptions = actions.map((action) => {
+      const clickHandler = (e) => {
+        modalHandler(e);
+        if (action.onClick) {
+          action.onClick();
+        }
+      };
+
+      return (
+        <button
+          key={action.label}
+          className="btn__active not-block"
+          onClick={clickHandler}
+        >
+          {action.label}
+        </button>
+      );
+    });
   }
 
   return (
@@ -52,23 +67,7 @@ const Modal = () => {
           )}
         </div>
         <div className="modal__footer">
-          {action && (
-            <button
-              className={`btn__active not-block`}
-              onClick={(e) => {
-                modalHandler(e);
-                actionHandler();
-              }}
-            >
-              Proceed
-            </button>
-          )}
-          <button
-            className={`btn__active not-block ${error ? "btn__error" : ""}`}
-            onClick={modalHandler}
-          >
-            Close
-          </button>
+          { btnOptions }
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ const modalReducer = (state = defaultModalState, { type, payload }) => {
         header: payload.header,
         body: payload.body,
         error: payload.error,
-        action: payload.action,
+        actions: payload.actions,
       };
       break;
 

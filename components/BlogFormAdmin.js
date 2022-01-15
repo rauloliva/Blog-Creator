@@ -51,6 +51,11 @@ const BlogForm = (props) => {
           header: "blog created",
           body: `Your blog "${response.blog.blog_title}" was created successfully`,
           error: false,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
       setTitle("");
@@ -63,6 +68,11 @@ const BlogForm = (props) => {
           header: "creation of blog failed",
           body: "Your blog could not be created",
           error: true,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
     }
@@ -86,6 +96,11 @@ const BlogForm = (props) => {
           header: "blog updated",
           body: `Your blog "${response.blog_title}" was updated successfully`,
           error: false,
+          actions: [
+            {
+              label: "Accept",
+            },
+          ],
         })
       );
       setTimeout(() => {
@@ -97,6 +112,11 @@ const BlogForm = (props) => {
           header: "update of blog failed",
           body: "Your blog could not be updated",
           error: true,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
     }
@@ -115,6 +135,11 @@ const BlogForm = (props) => {
             header: "blog deleted",
             body: `Your blog "${blog.blog_code}" was deleted successfully`,
             error: false,
+            actions: [
+              {
+                label: "Close",
+              },
+            ],
           })
         );
         setTimeout(() => {
@@ -126,6 +151,11 @@ const BlogForm = (props) => {
             header: "deleting your blog failed",
             body: "Your blog could not be deleted",
             error: true,
+            actions: [
+              {
+                label: "Close",
+              },
+            ],
           })
         );
       }
@@ -136,9 +166,12 @@ const BlogForm = (props) => {
         header: "delete blog",
         body: `Are you sure you want to delete this blog '${title}'?`,
         error: false,
-        action: async () => {
-          await deleteBlog();
-        },
+        actions: [
+          {
+            label: "Accept",
+            onClick: async () => await deleteBlog(),
+          },
+        ],
       })
     );
   };

@@ -1,9 +1,12 @@
 const { Database } = require("../../db");
+const { loggerConstructor } = require("../../logger");
+const logger = loggerConstructor("blog / blog_code / index");
 
 const db = new Database();
 
 const retrieveAllCodes = async (req, res) => {
   const method = req.method;
+  logger.info(`${method} requesting to /api/blog/blog_code/index`);
 
   if (method === "GET") {
     const response = await retrieveBlogs();

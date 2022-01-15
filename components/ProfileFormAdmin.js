@@ -57,6 +57,11 @@ const ProfileForm = ({ user }) => {
           header: "profile updated",
           body: "Your profile was updated successfully",
           error: false,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
     } else {
@@ -65,6 +70,11 @@ const ProfileForm = ({ user }) => {
           header: "update failed",
           body: "Your profile was not updated",
           error: true,
+          actions: [
+            {
+              label: "Close",
+            },
+          ],
         })
       );
     }
