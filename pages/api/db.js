@@ -31,7 +31,8 @@ export class Database {
       const rows = result.rows;
       return rows.length == 1 ? rows[0] : rows;
     } catch (error) {
-      logger.error(`Query failed: '${st}'`);
+      logger.error(`Query failed because ${error}`)  
+      logger.error(`Query: '${st}'`);
     }
   }
 

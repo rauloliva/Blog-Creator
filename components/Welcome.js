@@ -12,10 +12,8 @@ const Welcome = () => {
 
   const [btnStyle, setBtnStyle] = useState("btn__locked");
   const [serverResCode, setServerResCode] = useState(200);
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const logInHandler = async (event) => {
     event.preventDefault();
@@ -23,8 +21,6 @@ const Welcome = () => {
       event.preventDefault();
       return;
     }
-
-    const { email, password } = formValues;
 
     const access_token = localStorage.getItem("access_token");
 
@@ -44,23 +40,12 @@ const Welcome = () => {
 
       router.replace(`${router.route}admin`);
     } else {
+      setPassword("");
       setServerResCode(data.status);
     }
   };
 
-  const formHandler = (event) => {
-    const { id, value } = event.target;
-
-    setFormValues((prev) => {
-      return {
-        email: id === "email" ? value : prev.email,
-        password: id === "password" ? value : prev.password,
-      };
-    });
-  };
-
   const verifyFields = () => {
-    const { email, password } = formValues;
     if (email !== "" && password !== "") {
       setBtnStyle("btn__active");
     } else {
@@ -78,7 +63,8 @@ const Welcome = () => {
           type="email"
           id="email"
           onKeyUp={verifyFields}
-          onChange={formHandler}
+          onChange={e => setEmail(e.target.value)}
+          value={email}
           required
         />
 
@@ -87,7 +73,8 @@ const Welcome = () => {
           type="password"
           id="password"
           onKeyUp={verifyFields}
-          onChange={formHandler}
+          onChange={e => setPassword(e.target.value)}
+          value={password}
           required
         />
 
