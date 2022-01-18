@@ -1,9 +1,7 @@
 const bcrypt = require("bcrypt");
-const { Database } = require("../db");
+const { db } = require("../db");
 const { loggerConstructor } = require("../logger");
 const logger = loggerConstructor("user / [userId]");
-
-const db = new Database();
 
 const user = async (req, res) => {
   const method = req.method;
@@ -57,6 +55,8 @@ const updateUser = async (req) => {
         status: 500,
       };
     }
+  } finally {
+    await db.close()
   }
   return response;
 };
@@ -79,6 +79,8 @@ const getUser = async (req) => {
         status: 500,
       };
     }
+  } finally {
+    await db.close()
   }
   return response;
 };

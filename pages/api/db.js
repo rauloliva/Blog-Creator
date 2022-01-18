@@ -2,9 +2,10 @@ const { Client } = require("pg");
 const { loggerConstructor } = require("./logger");
 const logger = loggerConstructor("database");
 
-export class Database {
+class Database {
   constructor() {
     if (process.env.NODE_ENV == "production") {
+    // if ("production") {
       this.dbInstance = process.env.DB_PROD_URI;
       this.sslConfig = {
         ssl: {
@@ -36,7 +37,11 @@ export class Database {
     }
   }
 
-  close() {
-    return this.client.end();
+  async close() {
+    await this.client.end();
   }
 }
+
+const dbInstance = new Database();
+
+export const db = dbInstance

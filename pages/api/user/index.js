@@ -1,11 +1,9 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { Database } = require("../db");
+const { db } = require("../db");
 const { loggerConstructor } = require("../logger");
 const logger = loggerConstructor("user / index");
-
-const db = new Database();
 
 const userLogin = async (req, res) => {
   const method = req.method;
@@ -36,9 +34,11 @@ const login = async (req) => {
         const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN);
         response = { user, access_token, status: 200 };
       } else {
+        logger.error('The Credentials are incorrect');
         response = { message: "The Credentials are incorrect", status: 401 };
       }
     } else {
+      logger.error(`User with email ${email} and password provided not found`);
       response = { message: "The Credentials are incorrect", status: 401 };
     }
   } catch (error) {
@@ -55,6 +55,8 @@ const login = async (req) => {
         status: 500,
       };
     }
+  } finally {
+    await db.close()
   }
   return response;
 };

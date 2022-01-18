@@ -1,8 +1,6 @@
-const { Database } = require("../../db");
+const { db } = require("../../db");
 const { loggerConstructor } = require("../../logger");
 const logger = loggerConstructor("blog / blogs-by-user / [userId]");
-
-const db = new Database();
 
 const myBlogs = async (req, res) => {
   const method = req.method;
@@ -33,6 +31,8 @@ const retrieveBlogs = async (req) => {
       status: 500,
       message: err.message,
     };
+  } finally {
+    await db.close()
   }
   return response;
 };

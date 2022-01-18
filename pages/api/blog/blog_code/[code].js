@@ -1,8 +1,6 @@
-const { Database } = require("../../db");
+const { db } = require("../../db");
 const { loggerConstructor } = require("../../logger");
 const logger = loggerConstructor("blog / blog_code / [code]");
-
-const db = new Database();
 
 const getBlogs = async (req, res) => {
   const method = req.method;
@@ -38,6 +36,8 @@ const retrieveBlog = async (req) => {
       status: 500,
       message: err.message,
     };
+  } finally {
+    await db.close()
   }
   return response;
 };
@@ -60,6 +60,8 @@ const updateBlog = async (req) => {
       status: 500,
       message: err.message,
     };
+  } finally {
+    await db.close()
   }
   return response;
 };
@@ -75,6 +77,8 @@ const deleteBlog = async (code) => {
       status: 500,
       message: err.message,
     };
+  } finally {
+    await db.close()
   }
   return response;
 };

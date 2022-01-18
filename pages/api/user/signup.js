@@ -1,9 +1,7 @@
 const bcrypt = require("bcrypt");
-const { Database } = require("../db");
+const { db } = require("../db");
 const { loggerConstructor } = require("../logger");
 const logger = loggerConstructor("user / signup");
-
-const db = new Database();
 
 const signUp = async (req, res) => {
   const method = req.method;

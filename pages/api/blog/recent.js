@@ -1,8 +1,6 @@
-const { Database } = require("../db");
+const { db } = require("../db");
 const { loggerConstructor } = require("../logger");
 const logger = loggerConstructor("blog / recent");
-
-const db = new Database();
 
 const getRecentBlogs = async (req, res) => {
   const method = req.method;
@@ -29,6 +27,8 @@ const retrieveBlogs = async () => {
   } catch (error) {
     console.error(error);
     response = { status: 500, message: error };
+  } finally {
+    await db.close()
   }
   return response;
 };
