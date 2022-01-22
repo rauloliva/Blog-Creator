@@ -36,10 +36,15 @@ const updateUser = async (req) => {
       user_title,
     } = formData;
 
-    const password_hashed = await bcrypt.hash(user_password, 10);
-
+    let password_hashed;
+    if(user_password) {
+      password_hashed = await bcrypt.hash(user_password, 10);
+    }
+     
     await db.query(
-      `UPDATE public."Users" SET user_first_name = '${user_first_name}', user_last_name = '${user_last_name}', user_email = '${user_email}', user_phone = '${user_phone}', user_birthday = '${user_birthday}', user_description = '${user_description}', user_password = '${password_hashed}', user_title = '${user_title}' WHERE user_id = ${userId}`
+      `UPDATE public."Users" SET user_first_name = '${user_first_name}', user_last_name = '${user_last_name}', user_email = '${user_email}', user_phone = '${user_phone}', user_birthday = '${user_birthday}', user_description = '${user_description}',
+       ${user_password ? `user_password = '${password_hashed}', ` : ''} 
+       user_title = '${user_title}' WHERE user_id = ${userId}`
     );
     logger.info(`User ${userId} updated`);
 

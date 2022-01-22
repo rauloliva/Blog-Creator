@@ -31,7 +31,7 @@ const login = async (req) => {
     if (user) {
       const result = await bcrypt.compare(password, user.user_password);
       if (result) {
-        const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN);
+        const access_token = jwt.sign(user, process.env.JWT_ACCESS_TOKEN, { expiresIn: '1h' });
         response = { user, access_token, status: 200 };
       } else {
         logger.error('The Credentials are incorrect');

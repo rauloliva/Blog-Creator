@@ -7,7 +7,7 @@ $$
 BEGIN
 	UPDATE public."Blogs" SET blog_user_id = 1 WHERE blog_user_id = OLD.user_id;
 	RETURN NEW;
-END;
+ENoD;
 $$
 
 -- Before removing the user, pass their blogs to unknown user

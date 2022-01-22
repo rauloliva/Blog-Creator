@@ -31,7 +31,7 @@ const ProfileForm = ({ user }) => {
   }, [user]);
 
   const saveHandler = async () => {
-    const pwd = password.length > 0 ? password : user.user_password;
+    const pwd = password.length > 0 ? password : '';
 
     const response = await request(
       "/api/user/" + user.user_id,
