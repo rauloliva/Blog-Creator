@@ -35,8 +35,6 @@ const create = async (req) => {
   } catch (error) {
     console.error(error);
     response = { status: 500, message: error };
-  } finally {
-    await db.close()
   }
   return response;
 };

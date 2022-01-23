@@ -55,8 +55,6 @@ const login = async (req) => {
         status: 500,
       };
     }
-  } finally {
-    await db.close()
   }
   return response;
 };

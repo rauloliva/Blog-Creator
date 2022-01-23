@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<Loading />} persistor={persistor}>
         <Suspense fallback={<Loading />}>
           <Component {...pageProps} />
         </Suspense>

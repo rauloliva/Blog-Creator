@@ -21,8 +21,20 @@ class Database {
       connectionString: this.dbInstance,
       ...this.sslConfig,
     });
-    this.client.connect();
-    logger.info(`Connected to Database in ${process.env.NODE_ENV} env`);
+
+    this.connect()
+
+    this.client.on('connect', () => {
+        logger.info(`Connected to Database in ${process.env.NODE_ENV} env`);
+    })
+
+    this.client.on('end', () => {
+        logger.info(`Database connection is closed`);
+    })
+  }
+
+  async connect() {
+    await this.client.connect();
   }
 
   async query(st) {

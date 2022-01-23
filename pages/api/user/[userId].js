@@ -40,7 +40,7 @@ const updateUser = async (req) => {
     if(user_password) {
       password_hashed = await bcrypt.hash(user_password, 10);
     }
-     
+
     await db.query(
       `UPDATE public."Users" SET user_first_name = '${user_first_name}', user_last_name = '${user_last_name}', user_email = '${user_email}', user_phone = '${user_phone}', user_birthday = '${user_birthday}', user_description = '${user_description}',
        ${user_password ? `user_password = '${password_hashed}', ` : ''} 
@@ -60,8 +60,6 @@ const updateUser = async (req) => {
         status: 500,
       };
     }
-  } finally {
-    await db.close()
   }
   return response;
 };
@@ -84,8 +82,6 @@ const getUser = async (req) => {
         status: 500,
       };
     }
-  } finally {
-    await db.close()
   }
   return response;
 };

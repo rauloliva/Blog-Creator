@@ -69,6 +69,7 @@ export const useAuthenticate = (access_token) => {
       );
       setUser(res.user);
     } catch (error) {
+      localStorage.removeItem("access_token");
       Logger.of("URI.profile.request").error("Request failed: ", error);
       setNotAuth(true);
     }

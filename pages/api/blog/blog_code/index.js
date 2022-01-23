@@ -26,9 +26,7 @@ const retrieveBlogs = async () => {
       status: 500,
       message: err.message,
     };
-  } finally {
-    await db.close()
-  }
+  } 
   return response;
 };
 

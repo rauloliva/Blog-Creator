@@ -177,6 +177,7 @@ const BlogForm = (props) => {
   };
 
   const previewHandler = () => {
+    console.log("preview ", blog.blog_code);
     router.push("/blog/" + blog.blog_code);
   };
 

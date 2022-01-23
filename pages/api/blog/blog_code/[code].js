@@ -36,9 +36,7 @@ const retrieveBlog = async (req) => {
       status: 500,
       message: err.message,
     };
-  } finally {
-    await db.close()
-  }
+  } 
   return response;
 };
 
@@ -60,8 +58,6 @@ const updateBlog = async (req) => {
       status: 500,
       message: err.message,
     };
-  } finally {
-    await db.close()
   }
   return response;
 };
@@ -77,8 +73,6 @@ const deleteBlog = async (code) => {
       status: 500,
       message: err.message,
     };
-  } finally {
-    await db.close()
   }
   return response;
 };
