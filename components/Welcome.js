@@ -2,12 +2,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Alert from "./Alert";
 import { request } from "../utils";
-import { Logger } from "react-logger-lib";
 import LinkInternal from "./LinkInternal";
 
 const Welcome = () => {
-  Logger.of("Home.Welcome").info("init welcome component");
-
   const router = useRouter();
 
   const [btnStyle, setBtnStyle] = useState("btn__locked");

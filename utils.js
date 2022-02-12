@@ -1,10 +1,9 @@
-import { Logger } from "react-logger-lib";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
   return (_, value) => {
-    if (typeof value === "object" && value !== null) {
+    if (typeof value === 'object' && value !== null) {
       if (seen.has(value)) {
         return;
       }
@@ -18,8 +17,8 @@ export const request = (
   url,
   method,
   data = null,
-  action = "",
-  access_token = ""
+  action = '',
+  access_token = ''
 ) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -27,7 +26,7 @@ export const request = (
         method: method,
         body: data && JSON.stringify(data, getCircularReplacer()),
         headers: {
-          "action-type": action,
+          'action-type': action,
           authorization: access_token,
         },
       });
@@ -35,26 +34,25 @@ export const request = (
       const response = await responseObj.json();
       resolve(response);
     } catch (error) {
-      Logger.of(`API Request to ${url}`).error("Promise rejected: ", error);
       reject(error);
     }
   });
 };
 
 export const global = {
-  API_URL: "http://localhost:3000/api/",
+  API_URL: 'http://localhost:3000/api/',
 };
 
 export const icons = {
   email:
-    "https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/100/000000/external-email-advertising-kiranshastry-lineal-color-kiranshastry-1.png",
-  facebook: "https://img.icons8.com/fluency/100/000000/facebook-new.png",
-  github: "https://img.icons8.com/ios-filled/100/000000/github.png",
-  instagram: "https://img.icons8.com/color/100/000000/instagram-new--v1.png",
+    'https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/100/000000/external-email-advertising-kiranshastry-lineal-color-kiranshastry-1.png',
+  facebook: 'https://img.icons8.com/fluency/100/000000/facebook-new.png',
+  github: 'https://img.icons8.com/ios-filled/100/000000/github.png',
+  instagram: 'https://img.icons8.com/color/100/000000/instagram-new--v1.png',
 };
 
 // custom hook to authenticate the user with the access token
-export const useAuthenticate = (access_token) => {
+export const useAuthenticate = access_token => {
   const [user, setUser] = useState({});
   const [notAuth, setNotAuth] = useState(false);
 
@@ -62,15 +60,14 @@ export const useAuthenticate = (access_token) => {
     try {
       const res = await request(
         `${global.API_URL}user`,
-        "GET",
+        'GET',
         undefined,
-        "authenticate",
+        'authenticate',
         access_token
       );
       setUser(res.user);
     } catch (error) {
-      localStorage.removeItem("access_token");
-      Logger.of("URI.profile.request").error("Request failed: ", error);
+      localStorage.removeItem('access_token');
       setNotAuth(true);
     }
   }, [access_token]);
