@@ -1,27 +1,27 @@
-import { Fragment } from "react";
-import moment from "moment";
+import { Fragment } from 'react';
+import moment from 'moment';
 
 const BlogContent = ({ blog }) => {
   // create the paragraphs
   let blog_introduction, blog_body, blog_conclusion;
   if (blog.blog_body) {
     blog_introduction = blog.blog_introduction
-      .split("\n")
-      .map((line, index) => <p key={"intro_" + index}>{line}</p>);
+      .split('\n')
+      .map((line, index) => <p key={'intro_' + index}>{line}</p>);
 
     blog_body = blog.blog_body
-      .split("\n")
-      .map((line, index) => <p key={"body_" + index}>{line}</p>);
+      .split('\n')
+      .map((line, index) => <p key={'body_' + index}>{line}</p>);
 
     blog_conclusion = blog.blog_conclusion
-      .split("\n")
-      .map((line, index) => <p key={"conclusion_" + index}>{line}</p>);
+      .split('\n')
+      .map((line, index) => <p key={'conclusion_' + index}>{line}</p>);
   }
 
   const blog_creation_date = moment(blog.blog_creation_date).format(
-    "MMM Do YY"
+    'MMM Do YY'
   );
-  const author_name = blog.user_first_name + " " + blog.user_last_name;
+  const author_name = blog.user_first_name + ' ' + blog.user_last_name;
 
   return (
     <Fragment>

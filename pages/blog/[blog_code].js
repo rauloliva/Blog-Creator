@@ -1,27 +1,26 @@
-import React from "react";
-import { request } from "../../utils";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
-import BlogContent from "../../components/Blog";
-import { global } from "../../utils";
-import Metadata from "../../components/Metadata";
+import React from 'react';
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
+import BlogContent from '../../components/Blog';
+import Metadata from '../../components/Metadata';
+import { db } from '../api/db';
 const metadata = {
-  description: "List all blogs created from newest to oldest",
-  keywords: "blog list, blogs, recent blogs",
+  description: 'List all blogs created from newest to oldest',
+  keywords: 'blog list, blogs, recent blogs',
 };
 
-const Blog = (props) => (
+const Blog = props => (
   <div className="blog__box">
     <Metadata {...metadata} pageTitle={props.blog.blog_title} />
     <NavBar />
-    <BlogContent blog={props.blog} author={props.author} />
+    <BlogContent blog={JSON.parse(props.blog)} author={props.author} />
     <Footer />
   </div>
 );
 
 export async function getStaticPaths() {
-  const res = await request(`${global.API_URL}blog/blog_code`, "GET");
-  const paths = res.blog_codes.map((blog) => ({
+  const blogs_codes = await db.query(`SELECT blog_code FROM public."Blogs"`);
+  const paths = blogs_codes.map(blog => ({
     params: {
       blog_code: blog.blog_code,
     },
@@ -38,12 +37,11 @@ export async function getStaticProps(path) {
   let blog = {};
 
   const fetchBlog = async () => {
-    const response = await request(
-      `${global.API_URL}blog/blog_code/${blog_code}`,
-      "GET"
+    const blog_db = await db.query(
+      `SELECT * FROM public."Blogs" AS b inner join public."Users" as u on b.blog_user_id = u.user_id WHERE blog_code = '${blog_code}'`
     );
-    if (response.status === 200) {
-      blog = response.blog;
+    if (blog_db) {
+      blog = JSON.stringify(blog_db);
     }
   };
 

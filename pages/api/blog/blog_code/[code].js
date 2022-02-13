@@ -1,46 +1,25 @@
-const { db } = require("../../db");
-const { loggerConstructor } = require("../../logger");
-const logger = loggerConstructor("blog / blog_code / [code]");
+const { db } = require('../../db');
+const { loggerConstructor } = require('../../logger');
+const logger = loggerConstructor('blog / blog_code / [code]');
 
 const getBlogs = async (req, res) => {
   const method = req.method;
   logger.info(`${method} requesting to /api/blog/blog_code/${req.query.code}`);
 
-  if (method === "GET") {
-    const response = await retrieveBlog(req);
-    res.status(response.status).json(response);
-  } else if (method === "PUT") {
+  if (method === 'PUT') {
     const response = await updateBlog(req);
     res.status(response.status).json(response);
-  } else if (method === "DELETE") {
+  } else if (method === 'DELETE') {
     const response = await deleteBlog(req.query.code);
     res.status(response.status).json(response);
   } else {
     return res
       .status(405)
-      .json({ message: "This endpoint only uses POST method" });
+      .json({ message: 'This endpoint only uses POST method' });
   }
 };
 
-const retrieveBlog = async (req) => {
-  let response;
-  try {
-    const code = req.query.code;
-    const blog = await db.query(
-      `SELECT * FROM public."Blogs" AS b inner join public."Users" as u on b.blog_user_id = u.user_id WHERE blog_code = '${code}'`
-    );
-
-    response = { status: 200, blog: blog };
-  } catch (err) {
-    response = {
-      status: 500,
-      message: err.message,
-    };
-  } 
-  return response;
-};
-
-const updateBlog = async (req) => {
+const updateBlog = async req => {
   let response;
   try {
     const code = req.query.code;
@@ -62,7 +41,7 @@ const updateBlog = async (req) => {
   return response;
 };
 
-const deleteBlog = async (code) => {
+const deleteBlog = async code => {
   let response;
   try {
     await db.query(`DELETE FROM public."Blogs" WHERE blog_code = '${code}'`);
@@ -78,14 +57,14 @@ const deleteBlog = async (code) => {
 };
 
 const validateTitle = (code, title) => {
-  const currentCode = code.split("-").slice(0, -1).join("-");
-  const currentTitle = title.toUpperCase().replace(/ /g, "-");
+  const currentCode = code.split('-').slice(0, -1).join('-');
+  const currentTitle = title.toUpperCase().replace(/ /g, '-');
   return currentCode === currentTitle;
 };
 
-const generateBlogCode = (title) => {
+const generateBlogCode = title => {
   const random_num = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  return title.toUpperCase().replace(/ /g, "-") + "-" + random_num;
+  return title.toUpperCase().replace(/ /g, '-') + '-' + random_num;
 };
 
 export default getBlogs;

@@ -1,17 +1,17 @@
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
-import { Fragment } from "react";
-import { request, global } from "../../utils";
-import moment from "moment";
-import LinkInternal from "../../components/LinkInternal";
-import Metadata from "../../components/Metadata";
+import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
+import { Fragment } from 'react';
+import moment from 'moment';
+import LinkInternal from '../../components/LinkInternal';
+import Metadata from '../../components/Metadata';
+import { db } from '../api/db';
 const metadata = {
-  pageTitle: "Recent Blogs",
-  description: "List all blogs created from newest to oldest",
-  keywords: "blog list, blogs, recent blogs",
+  pageTitle: 'Recent Blogs',
+  description: 'List all blogs created from newest to oldest',
+  keywords: 'blog list, blogs, recent blogs',
 };
 
-const Main = (props) => (
+const Main = props => (
   <Fragment>
     <Metadata {...metadata} />
     <NavBar />
@@ -20,14 +20,14 @@ const Main = (props) => (
     </div>
 
     <div className="recentBlogs">
-      {props.recentBlogs.map((blog) => {
+      {JSON.parse(props.recentBlogs).map(blog => {
         const blog_creation_date = moment(blog.blog_creation_date).format(
-          "MMM Do YY"
+          'MMM Do YY'
         );
         return (
           <div key={`${blog.blog_id}-blog`} className="recentBlogs__container">
             <h2>{blog.blog_title}</h2>
-            <p>{blog.blog_introduction.substring(0, 120) + "..."}</p>
+            <p>{blog.blog_introduction.substring(0, 120) + '...'}</p>
             <p>{blog_creation_date}</p>
             <p>
               <LinkInternal href={`blog/${blog.blog_code}`} text="Read More" />
@@ -42,12 +42,14 @@ const Main = (props) => (
 
 export async function getStaticProps() {
   const getRecentBlogs = async () => {
-    const response = await request(`${global.API_URL}blog/recent`, "GET");
-    if (response.status === 200) {
-      return response.blogs;
-    } else {
-      return [];
+    const blogs = await db.query(
+      `SELECT * FROM public."Blogs" ORDER BY blog_id DESC LIMIT 12`
+    );
+
+    if (blogs) {
+      return JSON.stringify(blogs);
     }
+    return [];
   };
 
   return {
