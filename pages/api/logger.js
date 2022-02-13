@@ -1,8 +1,11 @@
 const winston = require("winston");
+const fs = require('fs') 
 const { createLogger, format } = winston;
 const { combine, timestamp, label, printf } = format;
 
 export const loggerConstructor = (labelText) => {
+  fs.existsSync('logs') || fs.mkdirSync('logs');
+
   const myFormat = printf(({ level, message, timestamp }) => {
     const date = new Date(timestamp);
     return `${date.toLocaleString()} [${labelText}] ${level}: ${message}`;
