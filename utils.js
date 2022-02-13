@@ -40,7 +40,7 @@ export const request = (
 };
 
 export const global = {
-  API_URL: 'http://localhost:3000/api/',
+  API_URL: process.env.NODE_ENV == 'production' ? 'https://blog-creator-rauloliva12.vercel.app/api' : 'http://localhost:3000/api/',
 };
 
 export const icons = {
@@ -67,6 +67,7 @@ export const useAuthenticate = access_token => {
       );
       setUser(res.user);
     } catch (error) {
+      console.error(error);
       localStorage.removeItem('access_token');
       setNotAuth(true);
     }
