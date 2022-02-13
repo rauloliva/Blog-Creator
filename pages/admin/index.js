@@ -12,6 +12,7 @@ const metadata = {
 
 export default function Admin() {
   const access_token = localStorage.getItem("access_token");
+  console.log("data 2 ", localStorage.getItem('access_token'));
   const [user, notAuth, authenticate] = useAuthenticate(access_token);
 
   useEffect(() => {

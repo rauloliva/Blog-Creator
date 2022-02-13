@@ -34,6 +34,8 @@ const Welcome = () => {
 
     if (data.status === 200) {
       localStorage.setItem("access_token", data.access_token);
+      console.log("access_token", data.access_token);
+      console.log("data", localStorage.getItem('access_token'));
 
       router.replace(`${router.route}admin`);
     } else {
