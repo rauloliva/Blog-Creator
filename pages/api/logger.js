@@ -4,6 +4,10 @@ const { createLogger, format } = winston;
 const { combine, timestamp, label, printf } = format;
 
 export const loggerConstructor = (labelText) => {
+  if(process.env.NODE_ENV == "production") {
+    return
+  }
+
   fs.existsSync('logs') || fs.mkdirSync('logs');
 
   const myFormat = printf(({ level, message, timestamp }) => {
