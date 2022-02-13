@@ -14,7 +14,7 @@ class ConsoleLogger {
 }
 
 export const loggerConstructor = labelText => {
-  if (process.env.NODE_ENV1 == 'production') {
+  if (process.env.NODE_ENV == 'production') {
     const consoleLogger = new ConsoleLogger();
     return consoleLogger;
   }
