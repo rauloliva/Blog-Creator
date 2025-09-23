@@ -3,8 +3,7 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 #__next {
@@ -20,7 +19,7 @@ a {
   box-sizing: border-box;
 }
 *::selection {
-  background-color: #d3f123;
+  background-color: rgb(211, 241, 35);
 }
 
 label {
@@ -72,7 +71,6 @@ label {
   display: flex;
   flex-wrap: wrap;
 }
-
 .welcome__form {
   background-color: #d5eebb;
   color: #444941;
@@ -84,7 +82,6 @@ label {
   align-items: center;
   width: 25%;
 }
-
 .welcome__image {
   height: 100vh;
   background-color: #5f7a61;
@@ -92,7 +89,6 @@ label {
   flex-grow: 999;
   min-width: 70%;
 }
-
 .welcome__sign-up {
   display: flex;
   align-items: baseline;
@@ -113,7 +109,6 @@ label {
   color: white;
   transition: 0.3s;
 }
-
 .btn__locked {
   display: block;
   font-size: 1.2rem;
@@ -125,7 +120,6 @@ label {
   cursor: default;
   background-color: #eeeeee;
 }
-
 .btn__link {
   display: block;
   font-size: 1.25em;
@@ -141,7 +135,6 @@ label {
   background-color: #7fc8a9;
   color: #5f7a61;
 }
-
 .btn__error {
   background-color: #9c2c2c;
   color: white;
@@ -151,7 +144,6 @@ label {
   color: black;
   transition: 0.3s;
 }
-
 .btn__color-p-s {
   background-color: #7fc8a9;
 }
@@ -517,13 +509,11 @@ input {
   display: flex;
   flex-direction: column;
 }
-
 .spinner-container {
   width: 100%;
   height: 100%;
   padding: 5em;
 }
-
 .spinner-paragraph {
   font-size: 1.5em;
   font-weight: bold;
