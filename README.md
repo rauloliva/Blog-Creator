@@ -1,10 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog Creator
+### This project helps the users to create and share their blogs, adding 3 important pieces, Introduction, Body and Conclusion
 
-## Getting Started
+# Technology Stack
+- React 18
+- Redux
+- SASS (CSS preprocessor)
+- JWT (JsonWebToken)
+- Neon (Postgres DB production deployment)
+- Vercel (Application deployment)
 
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Production Deployment
+### The web application is deployed in Vercel's AI Cloud 
+[Blog Creator](https://blog-creator.vercel.app/)
