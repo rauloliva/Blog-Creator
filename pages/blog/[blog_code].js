@@ -19,7 +19,13 @@ const Blog = props => (
 );
 
 export async function getStaticPaths() {
-  const blogs_codes = await db.query(`SELECT blog_code FROM public."Blogs"`);
+  let blogs_codes = await db.query(`SELECT blog_code FROM public."Blogs"`);
+
+  // make sure the API returns an arrays of blogs
+  if (!Array.isArray(blogs_codes)) {
+    blogs_codes = [blogs_codes];
+  }
+
   const paths = blogs_codes.map(blog => ({
     params: {
       blog_code: blog.blog_code,

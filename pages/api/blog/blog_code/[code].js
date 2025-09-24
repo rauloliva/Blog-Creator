@@ -4,19 +4,41 @@ const logger = loggerConstructor('blog / blog_code / [code]');
 
 const getBlogs = async (req, res) => {
   const method = req.method;
-  logger.info(`${method} requesting to /api/blog/blog_code/${req.query.code}`);
+  const blogCode = req.query.code;
+  logger.info(`${method} requesting to /api/blog/blog_code/${blogCode}`);
 
-  if (method === 'PUT') {
+  if (method === 'GET') {
+    const response = await getBlog(blogCode);
+    res.status(response.status).json(response);
+  } else if (method === 'PUT') {
     const response = await updateBlog(req);
     res.status(response.status).json(response);
   } else if (method === 'DELETE') {
-    const response = await deleteBlog(req.query.code);
+    const response = await deleteBlog(blogCode);
     res.status(response.status).json(response);
   } else {
     return res
       .status(405)
       .json({ message: 'This endpoint only uses POST method' });
   }
+};
+
+const getBlog = async blog_code => {
+  let response;
+
+  try {
+    const blog = await db.query(
+      `SELECT * FROM public."Blogs" WHERE blog_code = '${blog_code}'`
+    );
+    response = { status: 200, blog };
+  } catch (err) {
+    response = {
+      status: 500,
+      message: err.message,
+    };
+  }
+
+  return response;
 };
 
 const updateBlog = async req => {

@@ -47,6 +47,11 @@ export async function getStaticProps() {
     );
 
     if (blogs) {
+      // make sure the API returns an arrays of blogs
+      if (!Array.isArray(blogs)) {
+        return JSON.stringify([blogs]);
+      }
+
       return JSON.stringify(blogs);
     }
     return [];
