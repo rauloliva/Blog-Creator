@@ -40,7 +40,7 @@ export const request = (
 };
 
 export const global = {
-  API_URL: process.env.NODE_ENV == 'production' ? 'https://blog-creator-rauloliva12.vercel.app/api/' : 'http://localhost:3000/api/',
+  API_URL: process.env.NODE_ENV == 'production' ? 'https://blog-creator.vercel.app/api/' : 'http://localhost:3000/api/',
 };
 
 export const icons = {
